@@ -1,12 +1,25 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import CameraView from './src/components/CameraView';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Complementary Clothes</Text>
-    </View>
-  );
+
+const AppNavigator = createStackNavigator(
+  {
+    Home: CameraView
+  },
+  {
+    initialRouteName: 'Home',
+  }
+);
+
+const AppContainer = createAppContainer(AppNavigator);
+
+export default class App extends React.Component {
+  render() {
+    return <AppContainer />;
+  }
 }
 
 const styles = StyleSheet.create({
