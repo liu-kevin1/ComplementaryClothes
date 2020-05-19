@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import CameraView from './src/components/CameraView';
+import CameraView from './components/CameraView';
 
 
 const AppNavigator = createStackNavigator(
