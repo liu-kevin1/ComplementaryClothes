@@ -20,6 +20,9 @@ class Home extends React.Component {
                 <SafeAreaView style = {styles.head}>
                     <Text style = {{color="#000"}}>Home</Text>
                 </SafeAreaView>
+                <View style ={styles.navigation}>
+
+                </View>
 
             </View>
         );
@@ -33,11 +36,21 @@ const styles = Stylesheet.create({
 
     },
     head: {
+        flex: 1,
         width: '100%',
-        height: '10%',
+        height: '15%',
         backgroundColor: "blue",
         justifyContent:" Center",
         alignItems: "center"
+    },
+    navigation: {
+        flex: 1,
+        width: '100%',
+        height: "15%",
+        backgroundColor: "#DBF3FA",
+        alignItems: "flex-end",
+        justifyContent: "space-evenly",
+        flexDirection: "row",
     }
 
 });
