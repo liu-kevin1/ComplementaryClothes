@@ -1,13 +1,9 @@
 import React from 'react';
 import * as Permissions from 'expo-permissions';
-import { View, Text, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, Stylesheet, TouchableOpacity, Alert} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-// const Clarifai = require('clarifai');
-// const app = new Clarifai.App({
-// apiKey: 'YOUR_API_KEY'
-// });
 
 class Home extends React.Component {    
     constructor(props){
@@ -18,9 +14,28 @@ class Home extends React.Component {
         return (
             <View style={styles.container}>
                 <SafeAreaView style = {styles.head}>
-                    <Text style = {{color="#000"}}>Home</Text>
+                    <Text style = {{color:"#000"}}>Home</Text>
                 </SafeAreaView>
                 <View style ={styles.navigation}>
+                    <View style = {styles.nav1}>
+                        {/* <Icon>
+
+                        </Icon> */}
+                        <Text style = {{color: "#000"}}>Home</Text>
+                    </View>
+                    <View style = {styles.nav2}>
+                        {/* <Icon>
+                            
+                        </Icon> */}
+                        <Text style = {{color: "#000"}}>Camera</Text>
+                    </View>
+                    <View style = {styles.nav3}>
+                        {/* <Icon>
+                            
+                        </Icon> */}
+                        <Text style = {{color: "#000"}}>Library</Text>
+
+                    </View>
 
                 </View>
 
@@ -29,7 +44,7 @@ class Home extends React.Component {
     }
 }
 
-const styles = Stylesheet.create({
+const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: "flex-start",
@@ -51,7 +66,19 @@ const styles = Stylesheet.create({
         alignItems: "flex-end",
         justifyContent: "space-evenly",
         flexDirection: "row",
-    }
+    },
+    nav1: {
+        flex: 1,
+        alignItems: "center",
+    },
+    nav2: {
+        flex: 1,
+        alignItems: "center",
+    },
+    nav3: {
+        flex: 1,
+        alignItems: "center",
+    },
 
 });
 
