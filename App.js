@@ -3,14 +3,26 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import CameraView from './components/CameraView';
+import Confirmation from './components/Confirmation';
 
 
 const AppNavigator = createStackNavigator(
   {
-    Home: CameraView
+    Camera: {
+      screen: CameraView,
+      navigationOptions: {
+        headerShown: false
+      }
+    },
+    Confirmation: {
+      screen: Confirmation ,
+      navigationOptions: {
+        headerShown: false
+      }
+    }
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Camera',
   }
 );
 
