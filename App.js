@@ -3,11 +3,12 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import CameraView from './components/CameraView';
+import Home from './components/Home';
 
 
 const AppNavigator = createStackNavigator(
   {
-    Home: CameraView
+    Home: Home
   },
   {
     initialRouteName: 'Home',
