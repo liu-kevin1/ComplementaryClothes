@@ -5,7 +5,6 @@ import { createStackNavigator } from 'react-navigation-stack';
 import CameraView from './components/CameraView';
 import Confirmation from './components/Confirmation';
 
-
 const AppNavigator = createStackNavigator(
   {
     Camera: {
