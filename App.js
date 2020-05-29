@@ -4,7 +4,6 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import CameraView from './components/CameraView';
 
-
 const AppNavigator = createStackNavigator(
   {
     Home: CameraView
