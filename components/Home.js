@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Permissions from 'expo-permissions';
-import { View, Text, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -18,7 +18,7 @@ class Home extends React.Component {
         return (
             <View style={styles.container}>
                 <SafeAreaView style = {styles.head}>
-                    <Text style = {{color="#000"}}>Home</Text>
+                    <Text style = {{color:"#000"}}>Home</Text>
                 </SafeAreaView>
                 <View style ={styles.navigation}>
 
@@ -29,7 +29,7 @@ class Home extends React.Component {
     }
 }
 
-const styles = Stylesheet.create({
+const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: "flex-start",
