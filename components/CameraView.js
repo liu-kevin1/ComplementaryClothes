@@ -3,14 +3,13 @@ import * as Permissions from 'expo-permissions';
 import { Camera } from 'expo-camera';
 import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-
+import RecommendedItem from './RecommendedItem';
 
 // clarifai api setup
 const Clarifai = require('clarifai');
 const app = new Clarifai.App({
 apiKey: 'YOUR_API_KEY'
 });
-
 
 class CameraView extends React.Component{
     constructor(props){
@@ -23,7 +22,6 @@ class CameraView extends React.Component{
                 base64: true
             },
         };
-
     }
 
     async componentDidMount() {
@@ -40,12 +38,14 @@ class CameraView extends React.Component{
                 (response) => {
                     console.log(response)
                 }
+            
             ).catch(
                 error => {
                     console.log(error)
                 }
             )
-        }   
+        }
+        this.props.navigation.navigate('Confirmation')
     }
 
     render() {
