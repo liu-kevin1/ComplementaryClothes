@@ -3,7 +3,6 @@ import * as Permissions from 'expo-permissions';
 import { Camera } from 'expo-camera';
 import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import RecommendedItem from './RecommendedItem';
 
 // clarifai api setup
 const Clarifai = require('clarifai');

@@ -28,7 +28,7 @@ const AppNavigator = createStackNavigator(
     }
   },
   {
-    initialRouteName: 'Camera',
+    initialRouteName: 'Home',
   }
 );
 
