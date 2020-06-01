@@ -1,51 +1,30 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Alert, TouchableHighlight} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { createAppContainer } from 'react-navigation';
-import { NavigationContainer } from '@react-navigation/native'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import CameraView from './CameraView';
-import Confirmation from './Confirmation';
+import Icon from 'react-native-vector-icons/Ionicons';
+
 
 class Home extends React.Component {    
     constructor(props){
         super(props);
     }
-
+    goToCamera(){
+        this.props.navigation.navigate('Camera')
+    }
     render() {
         return (
-            <View style={styles.contaicner}>
+            <View style={styles.container}>
                 <SafeAreaView style = {styles.head}>
                     <Text style = {{color:"white", fontSize: 20}}>Home</Text>
                 </SafeAreaView>
-                {/* // <View style ={styles.navigation}>
-                //     <View style = {styles.nav1}>  /* I think I don't need this but I'm not sure/*
-                //         <TouchableHighlight style = {} onPress={}>
-                //             <Icon>
-                //             </Icon>
-                //             <Text style = {{color: "#000"}}>Home</Text>
-                //         </TouchableHighlight>
-                //     </View>
-                //     <View style = {styles.nav2}>
-                //         <TouchableHighlight>
-                //             <Icon>
-                                
-                //             </Icon>
-                //             <Text style = {{color: "#000"}}>Camera</Text>
-                //         </TouchableHighlight>
-                        
-                //     </View>
-                //     <View style = {styles.nav3}>
-                //         <TouchableHighlight>
-
-                //             <Icon>
-                                
-                //             </Icon>
-                //             <Text style = {{color: "#000"}}>Library</Text>
-                //         </TouchableHighlight>
-                //     </View>
-                // </View> */}
-                
+                <View style = {styles.cameraLink}>
+                    <Text style={styles.name}>CompClothes</Text>
+                    <TouchableOpacity onPress={this.goToCamera.bind(this)}>
+                        <Icon name="md-shirt" size = {200} color="#33B8FF">
+                        </Icon>
+                        <Text style={styles.prompt}>Find a pairing. Get recommended.</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
             
         );
@@ -55,17 +34,32 @@ class Home extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "flex-start",
-
     },
     head: {
         width: '100%',
-        height: '30%',
-        backgroundColor: "#33B8FF",
+        height: '8%',
+        backgroundColor: "blue",
         justifyContent:"center",
         alignItems: "center",
+        backgroundColor: "#33B8FF",
     },
-
+    name: {
+        color: "#33B8FF",
+        fontSize: 50,
+        alignSelf: "center"
+    },
+    cameraLink: {
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    prompt: {
+        fontSize: 20
+    },
+    start: {
+        fontSize: 20,
+        color: "white"
+    }
 });
 
 
