@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert, TouchableHighlight} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert, TouchableHighlight, StatusBar} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -15,16 +15,28 @@ class Home extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <SafeAreaView style = {styles.head}>
-                    <Text style = {{color:"white", fontSize: 20}}>Home</Text>
+                <SafeAreaView style = {styles.statusBar}>
                 </SafeAreaView>
                 <View style = {styles.cameraLink}>
-                    <Text style={styles.name}>CompClothes</Text>
-                    <TouchableOpacity onPress={this.goToCamera.bind(this)} style = {{alignItems: "center"}}>
-                        <Icon name="md-shirt" size = {200} color="#33B8FF">
+                    <TouchableOpacity onPress={this.goToCamera.bind(this)} style = {{justifyContent: 'center', alignItems: 'center'}}>
+                        <Icon name="md-shirt" size = {180} color="#33B8FF">
                         </Icon>
-                        <Text style={styles.prompt}>Find a pairing. Get recommended.</Text>
+                        <Text style={styles.prompt}>Find a pairing. Get recommended!</Text>
                     </TouchableOpacity>
+                </View>
+                <View style = {{flexDirection: 'row', alignSelf: 'center'}}>
+                    <View style = {styles.smallButton}>
+                        <TouchableOpacity style = {{justifyContent: 'center', alignItems: 'center'}}>
+                            <Icon name="md-person" size = {60} color = "#33B8FF">
+                            </Icon>
+                        </TouchableOpacity>
+                    </View>
+                    <View style = {styles.smallButton}>
+                        <TouchableOpacity style = {{justifyContent: 'center', alignItems: 'center'}}>
+                            <Icon name="md-share" size = {60} color = "#33B8FF">
+                            </Icon>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
             
@@ -36,27 +48,44 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    head: {
+    statusBar: {
         width: '100%',
-        height: '8%',
-        backgroundColor: "blue",
+        height: StatusBar.currentHeight,
         justifyContent:"center",
         alignItems: "center",
         backgroundColor: "#33B8FF",
     },
     name: {
         color: "#33B8FF",
-        fontSize: 50,
+        fontSize: 48,
         alignSelf: "center"
     },
     cameraLink: {
-        width: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        alignItems: "center",
+        marginTop: 20,
+        paddingBottom: 10,
+        backgroundColor: '#E0FBFF',
+        borderRadius: 20,
+        borderColor: '#FFFFFF',
+        borderWidth: 2.5,
+        width: '95%',
+        alignSelf: 'center',
+        justifyContent: 'center'
+    },
+    smallButton: {
+        margin: 10,
+        marginTop: 10,
+        backgroundColor: '#E0FBFF',
+        borderRadius: 20,
+        borderColor: '#FFFFFF',
+        borderWidth: 2.5,
+        width: '45%',
+        alignSelf: 'center',
+        justifyContent: 'center'
     },
     prompt: {
-        fontSize: 20
+        fontSize: 18,
+        color: '#000080',
+        fontWeight: 'bold',
     },
     start: {
         fontSize: 20,
