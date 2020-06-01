@@ -5,6 +5,8 @@ import { createStackNavigator } from 'react-navigation-stack';
 import Home from './components/Home';
 import CameraView from './components/CameraView';
 import Confirmation from './components/Confirmation';
+import Recommended from './components/Recommended';
+
 
 const AppNavigator = createStackNavigator(
   {
@@ -23,6 +25,12 @@ const AppNavigator = createStackNavigator(
     Confirmation: {
       screen: Confirmation ,
       navigationOptions: {
+        headerShown: false
+      }
+    },
+    Recommended: {
+      screen: Recommended,
+      navigationOptions : {
         headerShown: false
       }
     }

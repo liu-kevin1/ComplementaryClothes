@@ -58,7 +58,7 @@ class CameraView extends React.Component{
                 <Camera style = {{flex: 1}} type = {this.state.type} ref = {ref => {this.camera = ref;}}>
                     <View style={{flex: 1, backgroundColor: 'transparent', flexDirection: 'row'}}>
                         <TouchableOpacity style={{flex: 1, alignSelf: 'flex-end', alignItems: 'center' }} onPress = {this.pictureAndPredict.bind(this)}>
-                        <Icon name="md-camera" size = {100} color="#FFFFFF"></Icon>
+                            <Icon name="md-camera" size = {100} color="#33B8FF"></Icon>
                         </TouchableOpacity>
                     </View>
                 </Camera>
