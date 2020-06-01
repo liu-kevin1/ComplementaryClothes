@@ -27,24 +27,26 @@ class CameraView extends React.Component{
         const { status } = await Permissions.askAsync(Permissions.CAMERA);
         this.setState({hasCameraPermission: status === 'granted'});
     }
+
     async pictureAndPredict() {
 
         if(this.camera){
-
             let picture = await this.camera.takePictureAsync(this.state.photoOptions);
 
             app.models.predict(Clarifai.APPAREL_MODEL, picture.base64).then(
                 (response) => {
-                    console.log(response)
+                    console.log(response['outputs'][0]['data']['concepts'][0]['name'])
+                    this.props.navigation.navigate('Confirmation', {
+                        classification: response['outputs'][0]['data']['concepts'][0]['name']
+                    })
                 }
-            
             ).catch(
                 error => {
                     console.log(error)
                 }
             )
         }
-        this.props.navigation.navigate('Confirmation')
+        
     }
 
     render() {

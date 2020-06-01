@@ -3,13 +3,17 @@ import { View, Text, StyleSheet } from 'react-native';
 import { Font, AppLoading } from "expo";
 
 class Confirmation extends React.Component{
-
+    constructor(props){
+        super(props);
+        
+        this.state = {
+            classification: props.navigation.state.params.classification
+        }
+    }
     render () {
         return (
             <View>
-                <Text style = {styles.textConfirm}>
-                    Find a pairing. Get recommended.
-                </Text>
+                
             </View>
         )
     }

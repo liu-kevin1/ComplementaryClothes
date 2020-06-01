@@ -5,7 +5,7 @@ import { StyleSheet, View, Text } from 'react-native';
 class RecommendedItem extends React.Component{
 
     render () {
-        // const { url, title } = this.props;
+        const { img_url, url, title } = this.props;
         return (
             <View style = {styles.background}>
             </View>

@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 class Home extends React.Component {    
     constructor(props){
         super(props);
+
     }
     goToCamera(){
         this.props.navigation.navigate('Camera')
@@ -19,7 +20,7 @@ class Home extends React.Component {
                 </SafeAreaView>
                 <View style = {styles.cameraLink}>
                     <Text style={styles.name}>CompClothes</Text>
-                    <TouchableOpacity onPress={this.goToCamera.bind(this)}>
+                    <TouchableOpacity onPress={this.goToCamera.bind(this)} style = {{alignItems: "center"}}>
                         <Icon name="md-shirt" size = {200} color="#33B8FF">
                         </Icon>
                         <Text style={styles.prompt}>Find a pairing. Get recommended.</Text>
@@ -52,6 +53,7 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
+        alignItems: "center",
     },
     prompt: {
         fontSize: 20
