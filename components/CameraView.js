@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Permissions from 'expo-permissions';
 import { Camera } from 'expo-camera';
-import { View, Text, TouchableOpacity, Alert } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, StatusBar, SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 // clarifai api setup
@@ -53,6 +53,8 @@ class CameraView extends React.Component{
         return (
 
             <View style = {{flex:1}}>
+                <SafeAreaView style = {styles.statusBar}>
+                </SafeAreaView>
                 <Camera style = {{flex: 1}} type = {this.state.type} ref = {ref => {this.camera = ref;}}>
                     <View style={{flex: 1, backgroundColor: 'transparent', flexDirection: 'row'}}>
                         <TouchableOpacity style={{flex: 1, alignSelf: 'flex-end', alignItems: 'center' }} onPress = {this.pictureAndPredict.bind(this)}>
@@ -65,4 +67,14 @@ class CameraView extends React.Component{
     }
 }
 
+
+const styles = StyleSheet.create({
+    statusBar: {
+        width: '100%',
+        height: StatusBar.currentHeight,
+        justifyContent:"center",
+        alignItems: "center",
+        backgroundColor: "#33B8FF",
+    },
+})
 export default CameraView;

@@ -17,25 +17,27 @@ class Home extends React.Component {
             <View style={styles.container}>
                 <SafeAreaView style = {styles.statusBar}>
                 </SafeAreaView>
-                <View style = {styles.cameraLink}>
-                    <TouchableOpacity onPress={this.goToCamera.bind(this)} style = {{justifyContent: 'center', alignItems: 'center'}}>
-                        <Icon name="md-shirt" size = {180} color="#33B8FF">
-                        </Icon>
-                        <Text style={styles.prompt}>Find a pairing. Get recommended!</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style = {{flexDirection: 'row', alignSelf: 'center'}}>
-                    <View style = {styles.smallButton}>
-                        <TouchableOpacity style = {{justifyContent: 'center', alignItems: 'center'}}>
-                            <Icon name="md-person" size = {60} color = "#33B8FF">
+                <View style = {styles.sub}>
+                    <View style = {styles.cameraLink}>
+                        <TouchableOpacity onPress={this.goToCamera.bind(this)} style = {{justifyContent: 'center', alignItems: 'center'}}>
+                            <Icon name="md-shirt" size = {180} color="#33B8FF">
                             </Icon>
+                            <Text style={styles.prompt}>Find a pairing. Get recommended!</Text>
                         </TouchableOpacity>
                     </View>
-                    <View style = {styles.smallButton}>
-                        <TouchableOpacity style = {{justifyContent: 'center', alignItems: 'center'}}>
-                            <Icon name="md-share" size = {60} color = "#33B8FF">
-                            </Icon>
-                        </TouchableOpacity>
+                    <View style = {{flexDirection: 'row', alignSelf: 'center'}}>
+                        <View style = {styles.smallButton}>
+                            <TouchableOpacity style = {{justifyContent: 'center', alignItems: 'center'}}>
+                                <Icon name="md-person" size = {60} color = "#33B8FF">
+                                </Icon>
+                            </TouchableOpacity>
+                        </View>
+                        <View style = {styles.smallButton}>
+                            <TouchableOpacity style = {{justifyContent: 'center', alignItems: 'center'}}>
+                                <Icon name="md-share" size = {60} color = "#33B8FF">
+                                </Icon>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </View>
             </View>
@@ -46,6 +48,11 @@ class Home extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,    
+    },
+    sub:{
+        justifyContent:"center",
+        alignItems: "center",
         flex: 1,
     },
     statusBar: {
