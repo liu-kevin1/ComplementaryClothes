@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Font, AppLoading } from "expo";
-
+// Add the eBay API accessing from this page
 class Confirmation extends React.Component{
 
     render () {
