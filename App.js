@@ -18,10 +18,18 @@ const AppNavigator = createStackNavigator(
       navigationOptions: {
         headerShown: false
       }
+    },
+    /*
+    Recommended: {
+      screen: Recommended,
+      navigationOptions : {
+        headerShown: false
+      }
     }
+    */
   },
   {
-    initialRouteName: 'Camera',
+    initialRouteName: 'Confirmation',
   }
 );
 
