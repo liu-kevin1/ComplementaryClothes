@@ -2,9 +2,13 @@ import React from 'react';
 import { StyleSheet, View, Image, Text, Linking } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
+import * as firebase from 'firebase';
+import "firebase/database";
 
 
 class RecommendedItem extends React.Component{
+
+
 
     render () {
         const { img_url, url, title } = this.props;
