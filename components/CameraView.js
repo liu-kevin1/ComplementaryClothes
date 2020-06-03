@@ -13,7 +13,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 // clarifai api setup
 const Clarifai = require("clarifai");
 const app = new Clarifai.App({
-  apiKey: "",
+  apiKey: "YOUR_API_KEY",
 });
 
 class CameraView extends React.Component {
