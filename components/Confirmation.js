@@ -13,14 +13,20 @@ class Confirmation extends React.Component{
         this.getRecommendations()
     }
 
-    getRecommendations(){
+    async getRecommendations(){
+        /**
+         * Changes XML to JSON
+         * Modified version from here: http://davidwalsh.name/convert-xml-json
+         * @param {string} xml XML DOM tree
+         */
+        
         /*call the recommendation ebay api here with the keyword in this.state.classification. this is th onpress of the confirm*/
         
         // Tutorial code start
-        var url = "http://svcs.ebay.com/services/search/FindingService/v1";
+        var url = "https://svcs.ebay.com/services/search/FindingService/v1";
         url += "?OPERATION-NAME=findItemsByKeywords";
         url += "&SERVICE-VERSION=1.0.0";
-        url += "&SECURITY-APPNAME=MyAppID";
+        url += "&SECURITY-APPNAME=KevinLiu-CompClo-SBX-a2eb84eea-0ca6a20e";
         url += "&GLOBAL-ID=EBAY-US";
         url += "&RESPONSE-DATA-FORMAT=JSON";
         url += "&callback=_cb_findItemsByKeywords";
@@ -52,10 +58,38 @@ class Confirmation extends React.Component{
         s.src= url;
         */
 
-        console.log("test1_1")
+        console.log("test1_1");
         var test = fetch(url);
         console.log(test);
-        console.log("test2")
+        //var test2 = fetch("www.google.com");
+        //console.log(test2);
+        //console.log("test2");
+        var test4;
+        test4 = await(
+            fetch(url)
+            .then(function(response){
+                //console.log(response);
+                //var test3 = parseXml(response)
+                return response;
+            })
+            .catch(function(error) {
+                console.log('There has been a problem with your fetch operation: ' + error.message);
+                // ADD THIS THROW error
+                throw error;
+            })
+        );
+
+        var xmlhttp;
+        if (window.XMLHttpRequest)
+        {
+            xmlhttp = new XMLHttpRequest();
+        }
+        xmlhttp.open("GET",url,true);
+        console.log(xmlhttp);
+        
+        //var test5 = xmlToJson(test4);
+        console.log(test4.text());
+        console.log("above is test4");
         //document.body.appendChild(s);
         // Tutorial code end
 
