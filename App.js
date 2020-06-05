@@ -2,20 +2,11 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import Home from './components/Home';
 import CameraView from './components/CameraView';
 import Confirmation from './components/Confirmation';
-import Recommended from './components/Recommended';
-
 
 const AppNavigator = createStackNavigator(
   {
-    Home: {
-      screen: Home,
-      navigationOptions: {
-        headerShown: false
-      }
-    },
     Camera: {
       screen: CameraView,
       navigationOptions: {
@@ -23,17 +14,25 @@ const AppNavigator = createStackNavigator(
       }
     },
     Confirmation: {
-      screen: Confirmation ,
+      screen: Confirmation,
       navigationOptions: {
         headerShown: false
       }
     },
+    Home: {
+      screen: Home,
+      navigationOptions: {
+        headerShown: true
+      }
+    }
+    /*
     Recommended: {
       screen: Recommended,
       navigationOptions : {
         headerShown: false
       }
     }
+    */
   },
   {
     initialRouteName: 'Home',

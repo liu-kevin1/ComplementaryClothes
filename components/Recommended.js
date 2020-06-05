@@ -1,9 +1,6 @@
-import React from "react";
-import { View, StatusBar, StyleSheet, SafeAreaView } from "react-native";
-
-class Recommended extends React.Component {
-  constructor(props) {
-    super(props);
+import React from 'react';
+import { View, StatusBar, StyleSheet, SafeAreaView} from 'react-native';
+import RecommendedItem from './RecommendedItem';
 
     this.state = {
       recommendations: props.navigation.state.params.recommendations,
