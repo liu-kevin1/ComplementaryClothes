@@ -1,5 +1,6 @@
 import React from "react";
 import { View, StatusBar, StyleSheet, SafeAreaView } from "react-native";
+import RecommendedItem from "./RecommendedItem";
 
 class Confirmation extends React.Component {
   constructor(props) {
@@ -20,7 +21,13 @@ class Confirmation extends React.Component {
     return (
       <View>
         <SafeAreaView style={styles.statusBar}></SafeAreaView>
-        <View style={{ alignItems: "center", justifyContent: "center" }}></View>
+        <View style={{ alignItems: "center", justifyContent: "center" }}>
+          <RecommendedItem
+            img_url="https://www.rei.com/media/6f8be96e-a698-4076-9b6e-cb70e30445e6?size=512x682"
+            url="https://www.rei.com/product/125311/sunday-afternoons-havana-hat"
+            title="hat"
+          ></RecommendedItem>
+        </View>
       </View>
     );
   }
