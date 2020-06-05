@@ -16,9 +16,16 @@ import CameraView from "./CameraView";
 class Home extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      user: props.navigation.state.params.user,
+    }
   }
   goToCamera() {
-    this.props.navigation.navigate("Camera");
+    this.props.navigation.navigate("Camera",
+      {
+        user: this.state.user,
+      }
+    );
   }
   render() {
     return (
@@ -81,14 +88,14 @@ class Home extends React.Component {
                 </TouchableOpacity>
               </View>
             </View>
-            <View style = {styles.recents}>
-                <Text style = {[styles.largeText, {marginLeft: 15}]}>Recents</Text>
-                <View>
+            <View style={styles.recents}>
+              <Text style={[styles.largeText, { marginLeft: 15 }]}>Recents</Text>
+              <View>
 
-                </View>
+              </View>
             </View>
           </View>
-          
+
         </View>
         <CameraView navigation={this.props.navigation} />
       </Swiper>
@@ -148,9 +155,9 @@ const styles = StyleSheet.create({
     color: "white",
   },
   largeText: {
-    fontSize: 20, 
-    color: "#000080", 
-    fontWeight: "bold" 
+    fontSize: 20,
+    color: "#000080",
+    fontWeight: "bold"
   },
   recents: {
     backgroundColor: 'red',

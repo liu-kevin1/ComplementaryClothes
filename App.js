@@ -4,6 +4,9 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import CameraView from './components/CameraView';
 import Confirmation from './components/Confirmation';
+import Home from './components/Home';
+import Login from './components/Login';
+import Signup from './components/Signup';
 
 const AppNavigator = createStackNavigator(
   {
@@ -22,7 +25,19 @@ const AppNavigator = createStackNavigator(
     Home: {
       screen: Home,
       navigationOptions: {
-        headerShown: true
+        headerShown: false
+      }
+    },
+    Login: {
+      screen: Login,
+      navigationOptions: {
+        headerShown: false
+      }
+    },
+    Signup: {
+      screen: Signup,
+      navigationOptions: {
+        headerShown: false
       }
     }
     /*
@@ -35,7 +50,7 @@ const AppNavigator = createStackNavigator(
     */
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Login',
   }
 );
 
@@ -50,7 +65,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },

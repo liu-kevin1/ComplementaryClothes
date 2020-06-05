@@ -2,32 +2,30 @@ import React from "react";
 import { StyleSheet, View, Image, Text, Linking } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/Ionicons";
-import * as firebase from "firebase";
-import "firebase/database";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBsC52_gqDR8w6Bv1C_selUrWBIEQxiMig",
-  authDomain: "artfash-138e9.firebaseapp.com",
-  databaseURL: "https://artfash-138e9.firebaseio.com",
-  projectId: "artfash-138e9",
-  storageBucket: "artfash-138e9.appspot.com",
-  messagingSenderId: "362366799582",
-  appId: "1:362366799582:web:6573c90e65849cc6373c4f",
-};
-
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+import firebase from './../firebase';
 
 class RecommendedItem extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      user: props.navigation.state.params.user,
+    };
+  }
+
+
   purchase() {
     const { img_url, url, title } = this.props;
-
-    firebase.database().ref("purchases/").set({
-      img_url: img_url,
-      url: url,
-      title: title,
+    const time = Date.now()
+    firebase.database().ref("/" + this.state.user + '/puchases/').set({
+      time: {
+        img_url: img_url,
+        url: url,
+        title: title,
+      }
     });
+
     Linking.openURL(url);
   }
   render() {

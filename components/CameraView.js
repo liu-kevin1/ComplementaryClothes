@@ -13,7 +13,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 // clarifai api setup
 const Clarifai = require("clarifai");
 const app = new Clarifai.App({
-  apiKey: "YOUR_API_KEY",
+  apiKey: "df97b2c4d8824774985ab72ef6420510",
 });
 
 class CameraView extends React.Component {
@@ -26,6 +26,7 @@ class CameraView extends React.Component {
       photoOptions: {
         base64: true,
       },
+      user: props.navigation.state.params.user,
     };
   }
 
@@ -45,6 +46,7 @@ class CameraView extends React.Component {
           this.props.navigation.navigate("Confirmation", {
             classification:
               response["outputs"][0]["data"]["concepts"][0]["name"],
+            user: this.state.user
           });
         })
         .catch((error) => {
