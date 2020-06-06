@@ -61,55 +61,29 @@ class Confirmation extends React.Component{
         console.log("test1_1");
         var test = await (fetch(url)
             .then(function(response) {
-                console.log("Status: " + response.status);
+                //console.log("Status: " + response.status);
             })
             .catch(function(error) {
-                console.log("Error: " + error);
+                //console.log("Error: " + error);
                 throw error;
             })
-            
-            )
+        )
 
-        console.log(test);
+        //console.log(test);
 
-        var info = fetch(url)
+        var url2 = "https://www.parsehub.com/api/v2/runs/tULuvdyJysmM/data?api_key=tBbTET_aiw6F&format=json";
+
+        console.log("info from url2");
+
+        var info = fetch(url2)
         .then(response => response.text())
         .then(data => console.log(data))
         .catch(e => console.log(e))
         
-        console.log(info);
-
-        // var test2 = fetch("www.google.com");
-        // console.log(test2);
-        // console.log("test2");
-        // var test4;
-        // test4 = await(
-        //     fetch(url)
-        //     .then(function(response){
-        //         //console.log(response);
-        //         //var test3 = parseXml(response)
-        //         return response;
-        //     })
-        //     .catch(function(error) {
-        //         console.log('There has been a problem with your fetch operation: ' + error.message);
-        //         // ADD THIS THROW error
-        //         throw error;
-        //     })
-        // );
-
-        // var xmlhttp;
-        // if (window.XMLHttpRequest)
-        // {
-        //     xmlhttp = new XMLHttpRequest();
-        // }
-        // xmlhttp.open("GET",url,true);
-        // console.log(xmlhttp);
         
-        // //var test5 = xmlToJson(test4);
-        // console.log(test4.text());
-        // console.log("above is test4");
-        //document.body.appendChild(s);
-        // Tutorial code end
+        
+
+        
 
         this.props.navigation.navigate('Recommended', {
             recommended: /*data we get back from recommendation api */ ''
