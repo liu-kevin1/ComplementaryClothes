@@ -36,22 +36,27 @@ class Signup extends React.Component {
                 <SafeAreaView style={styles.statusBar}></SafeAreaView>
                 <View style={styles.sub}>
                     <TextInput
-                        style={{ height: 50, borderColor: 'gray', borderWidth: 1, width: "100%" }}
+                        style={styles.textBox}
                         onChangeText={text => this.setState({ username: text })}
                         value={this.state.username}
                         placeholder="Username"
+                        placeholderTextColor='white'
                     />
                     <TextInput
-                        style={{ height: 50, borderColor: 'gray', borderWidth: 1, width: "100%" }}
+                        style={styles.textBox}
                         onChangeText={text => this.setState({ password: text })}
                         value={this.state.password}
-                        placeholder="password"
+                        placeholder="Password"
+                        secureTextEntry
+                        placeholderTextColor='white'
                     />
-                    <TouchableOpacity onPress={this.signup.bind(this)}>
-                        <Text style={{ fontSize: 30 }}>
-                            Signup
-                        </Text>
-                    </TouchableOpacity>
+                    <View style = {styles.signuporloginView}>
+                        <TouchableOpacity onPress={this.signup.bind(this)} style = {styles.signuporloginButton}>
+                            <Text style={{ fontSize: 30, color: 'white' }}>
+                                Signup
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
         );
@@ -68,12 +73,38 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    textBox: {
+        height: 50, 
+        width: '85%',
+        borderRadius: 40,
+        marginBottom: 15,
+        paddingHorizontal: 15,
+        fontSize: 16,
+        backgroundColor: '#7AD7f0',
+        color: '#ffffff',
+    },
     statusBar: {
         width: "100%",
         height: StatusBar.currentHeight,
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#33B8FF",
+    },
+    signuporloginView: {
+        marginBottom: 80,
+        backgroundColor: "#588FC3",
+        padding: 5,
+        borderRadius: 10,
+        borderColor: "#FFFFFF",
+        borderWidth: 2.5,
+        alignSelf: "center",
+        justifyContent: "center",
+    },
+    signuporloginButton: {
+        alignSelf: "center",
+        justifyContent: "center",
+        paddingLeft: 40,
+        paddingRight: 40,
     },
 })
 
