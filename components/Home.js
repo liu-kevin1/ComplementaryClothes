@@ -16,9 +16,16 @@ import CameraView from "./CameraView";
 class Home extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      user: props.navigation.state.params.user,
+    }
   }
   goToCamera() {
-    this.props.navigation.navigate("Camera");
+    this.props.navigation.navigate("Camera",
+      {
+        user: this.state.user,
+      }
+    );
   }
   render() {
     return (
@@ -41,7 +48,7 @@ class Home extends React.Component {
             <View style={styles.cameraLink}>
               <View style={{ justifyContent: "center", alignItems: "center" }}>
                 <Text
-                  style={{ fontSize: 20, color: "#000080", fontWeight: "bold" }}
+                  style={styles.largeText}
                 >
                   What is CompClo?
                 </Text>
@@ -81,7 +88,14 @@ class Home extends React.Component {
                 </TouchableOpacity>
               </View>
             </View>
+            <View style={styles.recents}>
+              <Text style={[styles.largeText, { marginLeft: 15 }]}>Recents</Text>
+              <View>
+
+              </View>
+            </View>
           </View>
+
         </View>
         <CameraView navigation={this.props.navigation} />
       </Swiper>
@@ -140,6 +154,22 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "white",
   },
+  largeText: {
+    fontSize: 20,
+    color: "#000080",
+    fontWeight: "bold"
+  },
+  recents: {
+    backgroundColor: 'red',
+    paddingBottom: 10,
+    backgroundColor: "#f0fffe",
+    borderRadius: 20,
+    borderColor: "#FFFFFF",
+    borderWidth: 2.5,
+    width: "95%",
+    alignSelf: "center",
+    justifyContent: "center",
+  }
 });
 
 export default Home;

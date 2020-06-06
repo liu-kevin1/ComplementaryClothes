@@ -2,10 +2,32 @@ import React from "react";
 import { StyleSheet, View, Image, Text, Linking } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/Ionicons";
-import * as firebase from "firebase";
-import "firebase/database";
+import firebase from './../firebase';
 
 class RecommendedItem extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      user: props.navigation.state.params.user,
+    };
+  }
+
+
+  purchase() {
+    const { img_url, url, title } = this.props;
+    const time = Date.now()
+    firebase.database().ref("/" + this.state.user + '/puchases/').set({
+      time: {
+        img_url: img_url,
+        url: url,
+        title: title,
+      }
+    });
+
+    Linking.openURL(url);
+  }
   render() {
     const { img_url, url, title } = this.props;
     return (
@@ -25,7 +47,7 @@ class RecommendedItem extends React.Component {
         </Text>
         <TouchableOpacity
           style={{ flex: 1, alignSelf: "flex-end", alignItems: "center" }}
-          onPress={() => Linking.openURL(url)}
+          onPress={this.purchase.bind(this)}
         >
           <Icon name="md-cart" size={150} color="#33B8FF"></Icon>
           <Text style={{ color: "#33B8FF", fontSize: 20 }}>Purchase</Text>
