@@ -12,6 +12,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/Ionicons";
 import Swiper from "react-native-swiper";
 import CameraView from "./CameraView";
+import Account from "./Account";
+
 
 class Home extends React.Component {
   constructor(props) {
@@ -27,6 +29,14 @@ class Home extends React.Component {
       }
     );
   }
+  goToAccount() {
+    this.props.navigation.navigate("Account", 
+      {
+        user: this.state.user,
+      }
+    );
+  }
+
   render() {
     return (
       <Swiper
@@ -98,6 +108,7 @@ class Home extends React.Component {
 
         </View>
         <CameraView navigation={this.props.navigation} />
+        <Account navigation={this.props.navigation} />
       </Swiper>
     );
   }
