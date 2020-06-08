@@ -10,7 +10,7 @@ class RecommendedItem extends React.Component {
     super(props);
 
     this.state = {
-      user: props.navigation.state.params.user,
+      user: this.props.user
     };
   }
 

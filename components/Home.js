@@ -19,7 +19,7 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: props.navigation.state.params.user,
+      user: this.props.navigation.state.params.user,
     }
   }
   goToCamera() {
@@ -30,7 +30,7 @@ class Home extends React.Component {
     );
   }
   goToAccount() {
-    this.props.navigation.navigate("Account", 
+    this.props.navigation.navigate("Account",
       {
         user: this.state.user,
       }
