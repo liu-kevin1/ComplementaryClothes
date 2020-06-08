@@ -14,7 +14,6 @@ class Recommended extends React.Component {
 
   render() {
     <View style={{ alignItems: "center", justifyContent: "center" }}>
-      <RecommendedItem user={this.state.user} url="" img_url="" title=""></RecommendedItem>
     </View>;
   }
 }

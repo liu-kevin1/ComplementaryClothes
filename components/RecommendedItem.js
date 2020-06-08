@@ -31,11 +31,12 @@ class RecommendedItem extends React.Component {
   render() {
     const { img_url, url, title } = this.props;
     return (
+
       <View style={styles.background}>
         <Image
           style={{
             width: "90%",
-            height: "50%",
+            height: '50%',
             borderRadius: 10,
             marginTop: 20,
             marginBottom: 20,
@@ -53,6 +54,7 @@ class RecommendedItem extends React.Component {
           <Text style={{ color: "#33B8FF", fontSize: 20 }}>Purchase</Text>
         </TouchableOpacity>
       </View>
+
     );
   }
 }
@@ -60,11 +62,12 @@ class RecommendedItem extends React.Component {
 const styles = StyleSheet.create({
   background: {
     width: "97.5%",
-    height: "85%",
     borderRadius: 20,
     backgroundColor: "#c3c9c9",
     alignSelf: "center",
     alignItems: "center",
+    margin: 10,
+    flex: 1
   },
   title: {
     fontSize: 30,

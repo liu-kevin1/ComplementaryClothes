@@ -98,12 +98,6 @@ class Home extends React.Component {
                 </TouchableOpacity>
               </View>
             </View>
-            <View style={styles.recents}>
-              <Text style={[styles.largeText, { marginLeft: 15 }]}>Recents</Text>
-              <View>
-
-              </View>
-            </View>
           </View>
 
         </View>
