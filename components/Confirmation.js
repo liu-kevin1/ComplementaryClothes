@@ -8,7 +8,7 @@ class Confirmation extends React.Component {
 
     this.state = {
       classification: props.navigation.state.params.classification,
-      user: props.navigation.state.params.user,
+      user: this.props.navigation.state.params.user,
     };
   }
 
@@ -25,11 +25,8 @@ class Confirmation extends React.Component {
     url += "&REST-PAYLOAD";
     url += "&" + 'pants';
     url += "&paginationInput.entriesPerPage=3";
-    console.log(url)
-    console.log("test1_1")
-    var test = fetch(url).then(response => console.log(response)).catch(e => console.log(e));
-    console.log(test);
-    console.log("test2")
+    fetch(url).then(response => console.log(response)).catch(e => console.log(e));
+
 
     this.props.navigation.navigate('Recommended', {
       recommended: /*data we get back from recommendation api */ '',
@@ -42,7 +39,7 @@ class Confirmation extends React.Component {
         <SafeAreaView style={styles.statusBar}>
         </SafeAreaView>
         <View style={{ alignItems: "center", justifyContent: "center" }}>
-          <Button onPress={this.getRecommendations.bind(this)} title="hello"></Button>
+          <Button onPress={this.getRecommendations.bind(this)} title="confirm"></Button>
         </View>
       </View>
     )

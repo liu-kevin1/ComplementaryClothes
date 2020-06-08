@@ -32,7 +32,7 @@ class Signup extends React.Component {
             );
         }
         else {
-            Alert.alert("The username or password must be longer than five characters")
+            Alert.alert("The username or password must be longer than seven characters")
         }
     }
     render() {
@@ -55,8 +55,8 @@ class Signup extends React.Component {
                         secureTextEntry
                         placeholderTextColor='white'
                     />
-                    <View style = {styles.signuporloginView}>
-                        <TouchableOpacity onPress={this.signup.bind(this)} style = {styles.signuporloginButton}>
+                    <View style={styles.signuporloginView}>
+                        <TouchableOpacity onPress={this.signup.bind(this)} style={styles.signuporloginButton}>
                             <Text style={{ fontSize: 30, color: 'white' }}>
                                 Signup
                             </Text>
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     textBox: {
-        height: 50, 
+        height: 50,
         width: '85%',
         borderRadius: 40,
         marginBottom: 15,
