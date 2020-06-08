@@ -1,11 +1,11 @@
 import React from "react";
 import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  StatusBar,
-  SafeAreaView,
+    View,
+    Text,
+    StyleSheet,
+    TouchableOpacity,
+    StatusBar,
+    SafeAreaView,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import firebase from './../firebase';
@@ -17,36 +17,28 @@ class Account extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: props.navigation.state.params.user,
+            user: this.props.navigation.state.params.user,
         }
     }
 
-    getUser() {
-        var userId = firebase.auth().currentUser.uid;
-        return firebase.database().ref('/' + us).once('username');
-    }
-    
+
     render() {
         return (
-            <View style = {{ flex: 1 }}>
+            <View style={{ flex: 1 }}>
                 <SafeAreaView style={styles.statusBar}></SafeAreaView>
-                <Text style = {{fontWeight: 'bold', alignSelf: 'center', marginTop: 10,fontSize: 20 }}>@Username</Text>
-                <View style = {{flexDirection: 'row', alignSelf: 'center', marginTop: 20, width: '85%'}}>
-                    <View style = {{flex: 1, flexDirection: 'column', alignSelf: 'center', alignItems: 'center'}}>
-                        <Text style = {styles.info1}>?</Text>
-                        <Text style = {styles.info2}>Pictures</Text>
+                <Text style={{ fontWeight: 'bold', alignSelf: 'center', marginTop: 10, fontSize: 20 }}>{'@' + this.state.user} </Text>
+                <View style={{ flexDirection: 'row', alignSelf: 'center', marginTop: 20, width: '85%' }}>
+                    <View style={{ flex: 1, flexDirection: 'column', alignSelf: 'center', alignItems: 'center' }}>
+                        <Text style={styles.info1}>?</Text>
+                        <Text style={styles.info2}>Purchases</Text>
                     </View>
-                    <View style = {{flex: 1, flexDirection: 'column', alignSelf: 'center', alignItems: 'center'}}>
-                        <Text style = {styles.info1}>?</Text>
-                        <Text style = {styles.info2}>Streaks</Text>
-                    </View>
-                    <View style = {{flex: 1, flexDirection: 'column', alignSelf: 'center', alignItems: 'center'}}>
-                        <Text style = {styles.info1}>?</Text>
-                        <Text style = {styles.info2}>Friends</Text>
+                    <View style={{ flex: 1, flexDirection: 'column', alignSelf: 'center', alignItems: 'center' }}>
+                        <Text style={styles.info1}>?</Text>
+                        <Text style={styles.info2}>Streaks</Text>
                     </View>
                 </View>
-                <View style = {styles.photoHeader}>
-                    <Icon name = 'md-grid' size = {35}></Icon>
+                <View style={styles.photoHeader}>
+                    <Icon name='md-grid' size={35}></Icon>
                 </View>
             </View>
         );

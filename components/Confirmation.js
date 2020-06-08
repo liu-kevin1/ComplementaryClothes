@@ -40,6 +40,7 @@ class Confirmation extends React.Component {
         </SafeAreaView>
         <View style={{ alignItems: "center", justifyContent: "center" }}>
           <Button onPress={this.getRecommendations.bind(this)} title="confirm"></Button>
+          <RecommendedItem user={this.state.user} url="helllo" img_url="ddf" title="lol"></RecommendedItem>
         </View>
       </View>
     )

@@ -18,8 +18,8 @@ class RecommendedItem extends React.Component {
   purchase() {
     const { img_url, url, title } = this.props;
     const time = Date.now()
-    firebase.database().ref("/" + this.state.user + '/puchases/').set({
-      time: {
+    firebase.database().ref("/" + this.state.user + '/purchases/').update({
+      [time]: {
         img_url: img_url,
         url: url,
         title: title,
