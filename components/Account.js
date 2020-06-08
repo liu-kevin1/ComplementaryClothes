@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   StatusBar,
   SafeAreaView,
+  ScrollView,
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import firebase from './../firebase';
@@ -48,6 +49,10 @@ class Account extends React.Component {
                 <View style = {styles.photoHeader}>
                     <Icon name = 'md-grid' size = {35}></Icon>
                 </View>
+                <ScrollView style = {styles.scroll}>
+
+
+                </ScrollView>
             </View>
         );
     }
@@ -76,11 +81,15 @@ const styles = StyleSheet.create({
     },
     photoHeader: {
         marginTop: 10,
-        width: '100%',
-        borderWidth: 0.5,
+        width: '105%',
+        borderWidth: 2,
+        borderColor: 'white',
         backgroundColor: '#f0fffe',
         alignItems: 'center',
         paddingTop: 5,
+    },
+    scroll: {
+        marginTop: 5,
     }
 });
 
