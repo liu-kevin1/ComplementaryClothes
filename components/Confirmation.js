@@ -31,22 +31,57 @@ class Confirmation extends React.Component {
     console.log(test);
     console.log("test2")
 
-    this.props.navigation.navigate('Recommended', {
-      recommended: /*data we get back from recommendation api */ '',
-      user: this.state.user
-    });
-  }
-  render() {
-    return (
-      <View >
-        <SafeAreaView style={styles.statusBar}>
-        </SafeAreaView>
-        <View style={{ alignItems: "center", justifyContent: "center" }}>
-          <Button onPress={this.getRecommendations.bind(this)} title="hello"></Button>
-        </View>
-      </View>
-    )
-  }
+        this.getRecommendations()
+    }
+
+    async getRecommendations() {
+        /*call the api to get products here with the keyword in this.state.classification. this is the onpress of the confirm*/
+        
+        var url = "https://www.parsehub.com/api/v2/projects/t3LXvgFShK6y/last_ready_run/data?api_key=tBbTET_aiw6F&format=json"
+
+        var text;
+        var request = await (fetch(url)
+        .then(response => response.text())
+        .then(data => text = data)
+        .catch(e => console.log(e)));
+
+        var info = JSON.parse(text);
+
+        var props_navigation = this.props.navigation
+        if (info != undefined) {
+            // var entries = info.split("},");
+            // console.log("for loop");
+            // for (var i = 0; i < 5; i++) {
+            //     var data = entries[i].split(",");
+            //     for (var j = 0; j < data.length; j++) {
+            //         var values = data[j].split(': ');
+            //         var key = values[0];
+            //         var value = values[1];
+            //         console.log(key);
+            //     }
+            // } 
+            //console.log(text);
+            console.log(info.pants[1].name); 
+
+            props_navigation.navigate('Recommended', {
+                recommendations: info.pants[1] /*data we get back from recommendation api */
+            })
+        }
+        
+        
+    }
+
+    render () {
+        return (
+            <View >
+                <SafeAreaView style = {styles.statusBar}>
+                </SafeAreaView>
+                <View style = {{alignItems: "center", justifyContent: "center"}}>
+                    
+                </View>
+            </View>
+        )
+    }
 }
 
 const styles = StyleSheet.create({
