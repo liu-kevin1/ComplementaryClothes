@@ -9,11 +9,16 @@ class Recommended extends React.Component{
         this.state = {
             recommendations: props.navigation.state.params.recommendations
         }
+
+        
     }
+
     render(){
-        <View style = {{alignItems: "center", justifyContent: "center"}}>
-            <RecommendedItem url="" img_url="" title=""></RecommendedItem>
-        </View>
+        return ( 
+            <View style = {{alignItems: "center", justifyContent: "center"}}>
+                <RecommendedItem url={this.state.recommendations.price_url} img_url={this.state.recommendations.image} title={this.state.recommendations.name.substring(0, 15)}></RecommendedItem>
+            </View>
+        )
     }
 }
 

@@ -28,14 +28,14 @@ const AppNavigator = createStackNavigator(
         headerShown: false
       }
     },
-    /*
+    
     Recommended: {
       screen: Recommended,
       navigationOptions : {
         headerShown: false
       }
     }
-    */
+    
   },
   {
     initialRouteName: 'Confirmation',
