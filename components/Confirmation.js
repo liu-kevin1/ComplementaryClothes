@@ -43,7 +43,7 @@ class Confirmation extends React.Component{
             console.log(info.pants[1].name); 
 
             props_navigation.navigate('Recommended', {
-                recommendations: info.pants[1] //info /*data we get back from recommendation api */
+                recommendations: info.pants[1] /*data we get back from recommendation api */
             })
         }
         
