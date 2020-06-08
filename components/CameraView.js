@@ -26,7 +26,7 @@ class CameraView extends React.Component {
       photoOptions: {
         base64: true,
       },
-      user: props.navigation.state.params.user,
+      user: this.props.navigation.state.params.user,
     };
   }
 
