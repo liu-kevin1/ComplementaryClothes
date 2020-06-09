@@ -15,7 +15,23 @@ class Confirmation extends React.Component{
 
     async getRecommendations() {
         /*call the api to get products here with the keyword in this.state.classification. this is the onpress of the confirm*/
-        
+
+        // var urls = {
+        //     pants = "https://www.parsehub.com/api/v2/projects/t3LXvgFShK6y/last_ready_run/data?api_key=tBbTET_aiw6F&format=json",
+        //     shirts = "https://www.parsehub.com/api/v2/projects/tw8p9tJXSFT5/last_ready_run/data?api_key=tBbTET_aiw6F&format=json",
+        //     shoes = ,
+        //     hats = ,
+        //     socks = 
+        // }
+
+        // var pairing = {
+        //     shirts = urls[pants],
+        //     pants = urls[shoes],
+        //     shoes = urls[socks],
+        //     socks = urls[hats],
+        //     hats = urls[shirts]
+        // }
+
         var url = "https://www.parsehub.com/api/v2/projects/t3LXvgFShK6y/last_ready_run/data?api_key=tBbTET_aiw6F&format=json"
 
         var text;
@@ -43,7 +59,7 @@ class Confirmation extends React.Component{
             console.log(info.pants[1].name); 
 
             props_navigation.navigate('Recommended', {
-                recommendations: info.pants[1] /*data we get back from recommendation api */
+                recommendations: info.pants[1] /*data we get back from the api */
             })
         }
         
