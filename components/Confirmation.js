@@ -56,10 +56,10 @@ class Confirmation extends React.Component{
             //     }
             // } 
             //console.log(text);
-            console.log(info.pants[1].name); 
+            console.log(info.pants[0].name); 
 
             props_navigation.navigate('Recommended', {
-                recommendations: info.pants[1] /*data we get back from the api */
+                recommendations: [info.pants[0], info.pants[1]] /*data we get back from the api */
             })
         }
         
