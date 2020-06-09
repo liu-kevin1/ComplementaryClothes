@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StatusBar, StyleSheet, SafeAreaView, TouchableOpacity, TextInput, Text } from "react-native";
+import { View, StatusBar, StyleSheet, SafeAreaView, TouchableOpacity, TextInput, Text, Alert } from "react-native";
 import firebase from './../firebase';
 
 
@@ -21,14 +21,19 @@ class Signup extends React.Component {
         );
     }
     signup() {
-        firebase.database().ref("/" + this.state.username).set({
-            password: this.state.password
-        });
-        this.props.navigation.navigate("Home",
-            {
-                user: this.state.username,
-            }
-        );
+        if (this.state.username.length >= 7) {
+            firebase.database().ref("/" + this.state.username).set({
+                password: this.state.password
+            });
+            this.props.navigation.navigate("Home",
+                {
+                    user: this.state.username,
+                }
+            );
+        }
+        else {
+            Alert.alert("The username or password must be longer than seven characters")
+        }
     }
     render() {
         return (
@@ -50,8 +55,8 @@ class Signup extends React.Component {
                         secureTextEntry
                         placeholderTextColor='white'
                     />
-                    <View style = {styles.signuporloginView}>
-                        <TouchableOpacity onPress={this.signup.bind(this)} style = {styles.signuporloginButton}>
+                    <View style={styles.signuporloginView}>
+                        <TouchableOpacity onPress={this.signup.bind(this)} style={styles.signuporloginButton}>
                             <Text style={{ fontSize: 30, color: 'white' }}>
                                 Signup
                             </Text>
@@ -74,7 +79,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     textBox: {
-        height: 50, 
+        height: 50,
         width: '85%',
         borderRadius: 40,
         marginBottom: 15,
