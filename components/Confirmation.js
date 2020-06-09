@@ -24,7 +24,7 @@ class Confirmation extends React.Component{
         //     socks = 
         // }
 
-        // var pairing = {
+        // var url_pairing = {
         //     shirts = urls[pants],
         //     pants = urls[shoes],
         //     shoes = urls[socks],
