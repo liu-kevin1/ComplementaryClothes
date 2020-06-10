@@ -57,13 +57,10 @@ class Account extends React.Component {
                 <View style={styles.photoHeader}>
                     <Icon name='md-grid' size={35}></Icon>
                 </View>
-                <View style={styles.scroll}>
-                    <ScrollView >
-                        {this.state.purchases.map(purchase => <RecommendedItem user={this.state.user} img_url={purchase.img_url} url={purchase.url} title={purchase.title}></RecommendedItem>)}
+                <ScrollView style={styles.scroll}>
+                    {this.state.purchases.map(purchase => <RecommendedItem user={this.state.user} img_url={purchase.img_url} url={purchase.url} title={purchase.title}></RecommendedItem>)}
 
-                    </ScrollView>
-                </View>
-
+                </ScrollView>
             </View>
         );
     }
@@ -101,7 +98,6 @@ const styles = StyleSheet.create({
     },
     scroll: {
         marginTop: 5,
-        height: '75%',
     }
 });
 

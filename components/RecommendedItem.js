@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Image, Text, Linking, ScrollView } from "react-native";
+import { StyleSheet, View, Image, Text, Linking } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/Ionicons";
 import firebase from './../firebase';
@@ -62,13 +62,11 @@ class RecommendedItem extends React.Component {
 const styles = StyleSheet.create({
   background: {
     width: "97.5%",
-    height: 'auto',
     borderRadius: 20,
     backgroundColor: "#c3c9c9",
+    alignSelf: "center",
     alignItems: "center",
     margin: 10,
-    flexDirection: "column",
-    justifyContent: 'flex-start',
     flex: 1
   },
   title: {
