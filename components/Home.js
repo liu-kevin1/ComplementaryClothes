@@ -22,6 +22,11 @@ class Home extends React.Component {
       user: this.props.navigation.state.params.user,
     }
   }
+
+  componentDidMount() {
+    
+  }
+
   goToCamera() {
     this.props.navigation.navigate("Camera",
       {
@@ -35,6 +40,10 @@ class Home extends React.Component {
         user: this.state.user,
       }
     );
+  }
+
+  returnStreaks() {
+    
   }
 
   render() {
@@ -54,6 +63,15 @@ class Home extends React.Component {
       >
         <View style={styles.container}>
           <SafeAreaView style={styles.statusBar}></SafeAreaView>
+          <Icon 
+          name = "md-flame" 
+          size = {100}
+          color = "red"
+          style = {{marginTop: 20}}
+          >
+            <Text>?</Text>
+          </Icon>
+          <Text></Text>
           <View style={styles.sub}>
             <View style={styles.cameraLink}>
               <View style={{ justifyContent: "center", alignItems: "center" }}>
