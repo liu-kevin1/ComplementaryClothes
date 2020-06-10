@@ -32,7 +32,8 @@ class Confirmation extends React.Component{
         //     hats = urls[shirts]
         // }
 
-        var url = "https://www.parsehub.com/api/v2/projects/t3LXvgFShK6y/last_ready_run/data?api_key=tBbTET_aiw6F&format=json"
+        //https://www.parsehub.com/api/v2/runs/{RUN_TOKEN}/data
+        var url = "https://www.parsehub.com/api/v2/runs/tYCZrqCuTTy8/data?api_key=tBbTET_aiw6F&format=json"
 
         var text;
         var request = await (fetch(url)
@@ -56,7 +57,7 @@ class Confirmation extends React.Component{
             //     }
             // } 
             //console.log(text);
-            console.log(info.pants[0].name); 
+            console.log(info.pants[1]); 
 
             props_navigation.navigate('Recommended', {
                 recommendations: [info.pants[0], info.pants[1]] /*data we get back from the api */
