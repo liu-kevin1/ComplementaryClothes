@@ -35,7 +35,7 @@ class RecommendedItem extends React.Component {
       <View style={styles.background}>
         <Image
           style={{
-            width: "90%",
+            width: '90%',
             height: '50%',
             borderRadius: 10,
             marginTop: 15,

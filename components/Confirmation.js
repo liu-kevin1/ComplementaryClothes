@@ -124,17 +124,17 @@ class Confirmation extends React.Component{
 }
 
 const styles = StyleSheet.create({
-  textConfirm: {
-    alignSelf: "center",
-    fontSize: 50,
-  },
-  statusBar: {
-    width: "100%",
-    height: StatusBar.currentHeight,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#33B8FF",
-  },
-});
+    textConfirm: {
+        alignSelf: 'center',
+        fontSize: 50,
+    },
+    statusBar: {
+        width: '100%',
+        height: StatusBar.currentHeight,
+        justifyContent:"center",
+        alignItems: "center",
+        backgroundColor: "#33B8FF",
+    },
+})
 
 export default Confirmation;
