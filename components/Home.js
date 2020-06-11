@@ -7,12 +7,16 @@ import {
   Alert,
   TouchableHighlight,
   StatusBar,
+  Image,
+  ImageBackground,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/Ionicons";
 import Swiper from "react-native-swiper";
 import CameraView from "./CameraView";
 import Account from "./Account";
+import firebase from './../firebase';
+
 
 
 class Home extends React.Component {
@@ -20,12 +24,12 @@ class Home extends React.Component {
     super(props);
     this.state = {
       user: this.props.navigation.state.params.user,
+      purchases: [],
+      streaks: 0,
     }
   }
 
-  componentDidMount() {
-    
-  }
+  
 
   goToCamera() {
     this.props.navigation.navigate("Camera",
@@ -42,8 +46,24 @@ class Home extends React.Component {
     );
   }
 
+  componentDidMount() {
+    firebase.database().ref('/' + this.state.user + '/purchases/').on(
+        'value',
+        querySnapShot => {
+            let data = querySnapShot.val()
+            let i;
+            for (i = data.length() - 1; i >= 1; i--) {
+                if (Math.floor(data[i] / 86400) = Math.floor(data[i - 1] / 86400) + 1)
+                    this.setState({ streaks:  data.length() })
+                else if (Math.floor(data[i] / 86400) >= Math.floor(data[i - 1] / 86400) + 1)
+                    this.setState({ streaks: data.length() - i - 1})
+            }
+        }
+    )
+  }
+
   returnStreaks() {
-    
+    return this.state.streaks;
   }
 
   render() {
@@ -63,16 +83,13 @@ class Home extends React.Component {
       >
         <View style={styles.container}>
           <SafeAreaView style={styles.statusBar}></SafeAreaView>
-          <Icon 
-          name = "md-flame" 
-          size = {100}
-          color = "red"
-          style = {{marginTop: 20}}
-          >
-            <Text>?</Text>
-          </Icon>
-          <Text></Text>
           <View style={styles.sub}>
+            <ImageBackground
+              source = {require('./fire.png')}
+              style = {{width: 120, height: 120, justifyContent: 'center', alignSelf: 'center', alignItems: 'center'}}
+            >
+              <Text style = {{marginLeft: 2, marginTop: 45, fontSize: 30, fontWeight: 'bold'}}>{this.returnStreaks()}</Text>
+            </ImageBackground>
             <View style={styles.cameraLink}>
               <View style={{ justifyContent: "center", alignItems: "center" }}>
                 <Text
@@ -133,6 +150,7 @@ const styles = StyleSheet.create({
   sub: {
     justifyContent: "center",
     alignItems: "center",
+    marginBottom: 100,
     flex: 1,
   },
   statusBar: {
