@@ -52,18 +52,23 @@ class Home extends React.Component {
         querySnapShot => {
             let data = querySnapShot.val()
             let i;
-            for (i = data.length() - 1; i >= 1; i--) {
-                if (Math.floor(data[i] / 86400) = Math.floor(data[i - 1] / 86400) + 1)
-                    this.setState({ streaks:  data.length() })
-                else if (Math.floor(data[i] / 86400) >= Math.floor(data[i - 1] / 86400) + 1)
-                    this.setState({ streaks: data.length() - i - 1})
+            if (! (data === null)) {
+              for (i = data.length() - 1; i >= 1; i--) {
+                  if (Math.floor(data[i] / 86400) == Math.floor(data[i - 1] / 86400) + 1)
+                      this.setState({ streaks:  data.length() })
+                  else if (Math.floor(data[i] / 86400) >= Math.floor(data[i - 1] / 86400) + 1)
+                      this.setState({ streaks: data.length() - i - 1})
+              }
+            }
+            else {
+              this.state.streaks = 0;
             }
         }
     )
   }
 
-  returnStreaks() {
-    return this.state.streaks;
+  updateStreaks() {
+    this.state.streaks += 1;
   }
 
   render() {
@@ -88,7 +93,7 @@ class Home extends React.Component {
               source = {require('./fire.png')}
               style = {{width: 120, height: 120, justifyContent: 'center', alignSelf: 'center', alignItems: 'center'}}
             >
-              <Text style = {{marginLeft: 2, marginTop: 45, fontSize: 30, fontWeight: 'bold'}}>{this.returnStreaks()}</Text>
+              <Text style = {{marginLeft: 2, marginTop: 45, fontSize: 30, fontWeight: 'bold'}}>{this.state.streaks}</Text>
             </ImageBackground>
             <View style={styles.cameraLink}>
               <View style={{ justifyContent: "center", alignItems: "center" }}>

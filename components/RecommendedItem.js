@@ -3,17 +3,16 @@ import { StyleSheet, View, Image, Text, Linking, ScrollView } from "react-native
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/Ionicons";
 import firebase from './../firebase';
+import Home from "./Home";
 
 class RecommendedItem extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       user: this.props.user
     };
   }
-
 
   purchase() {
     const { img_url, url, title } = this.props;
@@ -28,6 +27,7 @@ class RecommendedItem extends React.Component {
 
     Linking.openURL(url);
   }
+
   render() {
     const { img_url, url, title } = this.props;
     return (

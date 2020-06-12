@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
+
 // clarifai api setup
 const Clarifai = require("clarifai");
 const app = new Clarifai.App({
