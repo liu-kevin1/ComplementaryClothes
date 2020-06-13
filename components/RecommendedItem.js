@@ -1,8 +1,9 @@
 import React from "react";
-import { StyleSheet, View, Image, Text, Linking, ScrollView } from "react-native";
+import { StyleSheet, View, Image, Text, Linking, ScrollView, Button, Share } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/Ionicons";
 import firebase from './../firebase';
+import * as Sharing from 'expo-sharing';
 
 class RecommendedItem extends React.Component {
 
@@ -27,11 +28,24 @@ class RecommendedItem extends React.Component {
     Linking.openURL(url);
   }
 
+  openShareDialogAsync = async () => {
+    try {
+      const results = Share.share({
+        message: "I used the CompClo app to buy this piecee: " + this.props.url + " Try it out yourself!"
+      });
+    }
+    catch (error) {
+      alert(error.message)
+    }
+  };
   render() {
     const { img_url, url, title } = this.props;
     return (
 
       <View style={styles.background}>
+        <TouchableOpacity onPress={this.openShareDialogAsync}>
+          <Text>Share</Text>
+        </TouchableOpacity>
         <Image
           style={{
             width: '90%',
