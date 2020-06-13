@@ -93,8 +93,11 @@ class Home extends React.Component {
           <View style={styles.sub}>
             <Modal
             transparency={true}
-            visible={this.state.isModal}>
+            visible={!this.state.isModal}>
               <Text>kirb egg</Text>
+              <TouchableOpacity onPress={this.state.isModal=false}>
+                <Text>more kirb egg</Text>
+              </TouchableOpacity>
             </Modal>
             <ImageBackground
               source = {require('./fire.png')}
@@ -227,6 +230,7 @@ const styles = StyleSheet.create({
   },
   modal: {
     backgroundColor: 'white',
+    margin: 30,
     borderRadius: 10,
     borderColor: 'white',
   }
