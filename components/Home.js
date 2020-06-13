@@ -88,6 +88,8 @@ class Home extends React.Component {
           <SafeAreaView style={styles.statusBar}></SafeAreaView>
           <View style={styles.sub}>
             <Modal
+            animationType="slide"
+            style={styles.modal}
             transparency={true}
             visible={this.state.isModal}>
               <Text>kirb egg</Text>
@@ -133,7 +135,6 @@ class Home extends React.Component {
                 <TouchableOpacity
                   style={{ justifyContent: "center", alignItems: "center" }}
                   onPress={() => this.setState({ isModal: true })}
-                  style={styles.modal}
                 >
                   <Icon name="md-person" size={60} color="#33B8FF"></Icon>
                 </TouchableOpacity>
@@ -226,7 +227,8 @@ const styles = StyleSheet.create({
   },
   modal: {
     backgroundColor: 'white',
-    margin: 30,
+    padding: 50,
+    margin: 50,
     borderRadius: 10,
     borderColor: 'white',
   }
