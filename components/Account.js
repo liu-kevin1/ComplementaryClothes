@@ -33,18 +33,9 @@ class Account extends React.Component {
                 let j;
                 let i;
                 for (j in data) {
-                    this.setState({ purchases: [...this.state.purchases, data[i]] })
-                }
-                if (! (data === null)) {
-                    for (i = data.length() - 1; i >= 1; i--) {
-                        if (Math.floor(data[i] / 86400) == Math.floor(data[i - 1] / 86400) + 1)
-                            this.setState({ streaks:  data.length() })
-                        else if (Math.floor(data[i] / 86400) >= Math.floor(data[i - 1] / 86400) + 1)
-                            this.setState({ streaks: data.length() - i - 1})
-                    }
-                  }
-                else {
-                    this.state.streaks = 0;
+                    console.log(data[j])
+                    let joined = this.state.purchases.concat(data[j])
+                    this.setState({ purchases: joined })
                 }
             }
         )

@@ -9,7 +9,7 @@ class Confirmation extends React.Component {
     this.state = {
       classification: this.props.navigation.state.params.classification
     }
-    console.log(this.state.classification)
+    
     this.getRecommendations()
   }
 
@@ -45,7 +45,7 @@ class Confirmation extends React.Component {
     }
 
     var url = url_pairing[this.state.classification.toLowerCase()];
-
+    console.log(this.state.classification.toLowerCase());
     if (url == undefined) {
         url = urls["shirts"];
     }
@@ -56,7 +56,6 @@ class Confirmation extends React.Component {
       .then(data => text = data)
       .catch(e => console.log(e)));
 
-    console.log(text);
     var info = JSON.parse(text);
 
     var props_navigation = this.props.navigation
