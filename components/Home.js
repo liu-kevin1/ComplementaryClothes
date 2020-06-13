@@ -92,7 +92,7 @@ class Home extends React.Component {
             visible={this.state.isModal}>
               <Text>kirb egg</Text>
               <TouchableOpacity onPress={() => this.setState({ isModal: false })}>
-                <Text>more kirb egg</Text>
+                <Text>spleen kirb egg</Text>
               </TouchableOpacity>
             </Modal>
             <ImageBackground
