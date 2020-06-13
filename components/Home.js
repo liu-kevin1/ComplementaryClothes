@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Modal,
   View,
   Text,
   StyleSheet,
@@ -25,6 +26,7 @@ class Home extends React.Component {
     this.state = {
       user: this.props.navigation.state.params.user,
       purchases: [],
+      isModal: false,
       streaks: 0,
     }
   }
@@ -89,6 +91,11 @@ class Home extends React.Component {
         <View style={styles.container}>
           <SafeAreaView style={styles.statusBar}></SafeAreaView>
           <View style={styles.sub}>
+            <Modal
+            transparency={true}
+            visible={this.state.isModal}>
+              <Text>kirb egg</Text>
+            </Modal>
             <ImageBackground
               source = {require('./fire.png')}
               style = {{width: 120, height: 120, justifyContent: 'center', alignSelf: 'center', alignItems: 'center'}}
@@ -126,6 +133,8 @@ class Home extends React.Component {
               <View style={styles.smallButton}>
                 <TouchableOpacity
                   style={{ justifyContent: "center", alignItems: "center" }}
+                  onPress = {this.state.isModal = true}
+                  style={styles.modal}
                 >
                   <Icon name="md-person" size={60} color="#33B8FF"></Icon>
                 </TouchableOpacity>
@@ -215,6 +224,11 @@ const styles = StyleSheet.create({
     width: "95%",
     alignSelf: "center",
     justifyContent: "center",
+  },
+  modal: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    borderColor: 'white',
   }
 });
 
