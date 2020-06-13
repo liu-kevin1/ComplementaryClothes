@@ -31,7 +31,9 @@ class Account extends React.Component {
                 let data = querySnapShot.val()
                 let j;
                 for (j in data) {
-                    this.setState({ purchases: [...this.state.purchases, data[j]] })
+                    console.log(data[j])
+                    let joined = this.state.purchases.concat(data[j])
+                    this.setState({ purchases: joined })
                 }
             }
         )
