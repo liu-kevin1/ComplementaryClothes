@@ -17,7 +17,7 @@ import Swiper from "react-native-swiper";
 import CameraView from "./CameraView";
 import Account from "./Account";
 import firebase from './../firebase';
-
+import Login from './Login';
 
 
 class Home extends React.Component {
@@ -26,7 +26,7 @@ class Home extends React.Component {
     this.state = {
       user: this.props.navigation.state.params.user,
       purchases: [],
-      isModal: true,
+      isModal: false,
       streaks: 0,
     }
   }
@@ -74,14 +74,14 @@ class Home extends React.Component {
       <Swiper
         loop={false}
         dotStyle={{
-          width: 4,
-          height: 4,
-          marginBottom: -30,
-        }}
-        activeDotStyle={{
           width: 8,
           height: 8,
-          marginBottom: -30,
+          marginBottom: -20,
+        }}
+        activeDotStyle={{
+          width: 10,
+          height: 10,
+          marginBottom: -20,
         }}
       >
         <View style={styles.container}>
@@ -94,13 +94,16 @@ class Home extends React.Component {
               backdropOpacity={0.5}
               visible={this.state.isModal}>
               <View style = {styles.modal}>
-                <Text>Your Account</Text>
+                <Text>Getting Started</Text>
                 <TouchableOpacity onPress={() => this.setState({ isModal: false })}>
                   <Text>Exit</Text>
                 </TouchableOpacity>
               </View>
             </Modal>
           </View>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate("Login")}>
+            <Icon name = "md-return-left" size = {40} style = {{marginLeft: 10, marginTop: -15, color: '#000080'}}></Icon>
+          </TouchableOpacity>
           <View style={styles.sub}>
             <ImageBackground
               source = {require('./fire.png')}
@@ -141,7 +144,7 @@ class Home extends React.Component {
                   style={{ justifyContent: "center", alignItems: "center" }}
                   onPress={() => this.setState({ isModal: true })}
                 >
-                  <Icon name="md-person" size={60} color="#33B8FF"></Icon>
+                  <Icon name="md-help" size={60} color="#33B8FF"></Icon>
                 </TouchableOpacity>
               </View>
               <View style={styles.smallButton}>
