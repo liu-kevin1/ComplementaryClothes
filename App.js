@@ -7,6 +7,7 @@ import Confirmation from './components/Confirmation';
 import Home from './components/Home';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import Recommended from './components/Recommended';
 
 const AppNavigator = createStackNavigator(
   {
@@ -22,32 +23,35 @@ const AppNavigator = createStackNavigator(
         headerShown: false
       }
     },
+
     Home: {
       screen: Home,
       navigationOptions: {
         headerShown: false
       }
     },
+
     Login: {
       screen: Login,
       navigationOptions: {
         headerShown: false
       }
     },
+
+    Recommended: {
+      screen: Recommended,
+      navigationOptions: {
+        headerShown: false
+      }
+    },
+
     Signup: {
       screen: Signup,
       navigationOptions: {
         headerShown: false
       }
     }
-    /*
-    Recommended: {
-      screen: Recommended,
-      navigationOptions : {
-        headerShown: false
-      }
-    }
-    */
+
   },
   {
     initialRouteName: 'Login',
@@ -58,7 +62,7 @@ const AppContainer = createAppContainer(AppNavigator);
 
 export default class App extends React.Component {
   render() {
-    return <AppContainer />;
+    return <AppContainer/>;
   }
 }
 

@@ -14,13 +14,13 @@ import RecommendedItem from "./RecommendedItem";
 
 
 
-
 class Account extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             user: this.props.navigation.state.params.user,
-            purchases: []
+            purchases: [],
+            streaks: 0,
         }
     }
 
@@ -29,9 +29,9 @@ class Account extends React.Component {
             'value',
             querySnapShot => {
                 let data = querySnapShot.val()
-                let i;
-                for (i in data) {
-                    this.setState({ purchases: [...this.state.purchases, data[i]] })
+                let j;
+                for (j in data) {
+                    this.setState({ purchases: [...this.state.purchases, data[j]] })
                 }
             }
         )
@@ -39,7 +39,6 @@ class Account extends React.Component {
     }
 
     render() {
-
         return (
             <View style={{ flex: 1 }}>
                 <SafeAreaView style={styles.statusBar}></SafeAreaView>
@@ -50,17 +49,20 @@ class Account extends React.Component {
                         <Text style={styles.info2}>Purchases</Text>
                     </View>
                     <View style={{ flex: 1, flexDirection: 'column', alignSelf: 'center', alignItems: 'center' }}>
-                        <Text style={styles.info1}>?</Text>
+                        <Text style={styles.info1}>{this.state.streaks}</Text>
                         <Text style={styles.info2}>Streaks</Text>
                     </View>
                 </View>
                 <View style={styles.photoHeader}>
                     <Icon name='md-grid' size={35}></Icon>
                 </View>
-                <ScrollView style={styles.scroll}>
-                    {this.state.purchases.map(purchase => <RecommendedItem user={this.state.user} img_url={purchase.img_url} url={purchase.url} title={purchase.title}></RecommendedItem>)}
+                <View style={styles.scroll}>
+                    <ScrollView >
+                        {this.state.purchases.map(purchase => <RecommendedItem user={this.state.user} img_url={purchase.img_url} url={purchase.url} title={purchase.title}></RecommendedItem>)}
 
-                </ScrollView>
+                    </ScrollView>
+                </View>
+
             </View>
         );
     }
@@ -98,6 +100,7 @@ const styles = StyleSheet.create({
     },
     scroll: {
         marginTop: 5,
+        height: '75%',
     }
 });
 

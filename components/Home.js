@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Modal,
   View,
   Text,
   StyleSheet,
@@ -7,12 +8,16 @@ import {
   Alert,
   TouchableHighlight,
   StatusBar,
+  Image,
+  ImageBackground,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Icon from "react-native-vector-icons/Ionicons";
 import Swiper from "react-native-swiper";
 import CameraView from "./CameraView";
 import Account from "./Account";
+import firebase from './../firebase';
+import Login from './Login';
 
 
 class Home extends React.Component {
@@ -20,12 +25,13 @@ class Home extends React.Component {
     super(props);
     this.state = {
       user: this.props.navigation.state.params.user,
+      purchases: [],
+      isModal: false,
+      streaks: 0,
     }
   }
 
-  componentDidMount() {
-    
-  }
+
 
   goToCamera() {
     this.props.navigation.navigate("Camera",
@@ -42,37 +48,49 @@ class Home extends React.Component {
     );
   }
 
-  returnStreaks() {
-    
-  }
 
   render() {
     return (
       <Swiper
         loop={false}
         dotStyle={{
-          width: 4,
-          height: 4,
-          marginBottom: -30,
-        }}
-        activeDotStyle={{
           width: 8,
           height: 8,
-          marginBottom: -30,
+          marginBottom: -20,
+        }}
+        activeDotStyle={{
+          width: 10,
+          height: 10,
+          marginBottom: -20,
         }}
       >
         <View style={styles.container}>
           <SafeAreaView style={styles.statusBar}></SafeAreaView>
-          <Icon 
-          name = "md-flame" 
-          size = {100}
-          color = "red"
-          style = {{marginTop: 20}}
-          >
-            <Text>?</Text>
-          </Icon>
-          <Text></Text>
+          <View style={styles.modalView}>
+            <Modal
+              animationType="slide"
+              transparency={true}
+              backdropColor={'white'}
+              backdropOpacity={0.5}
+              visible={this.state.isModal}>
+              <View style={styles.modal}>
+                <Text>Getting Started</Text>
+                <TouchableOpacity onPress={() => this.setState({ isModal: false })}>
+                  <Text>Exit</Text>
+                </TouchableOpacity>
+              </View>
+            </Modal>
+          </View>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate("Login")}>
+            <Icon name="md-return-left" size={40} style={{ marginLeft: 10, marginTop: -15, color: '#000080' }}></Icon>
+          </TouchableOpacity>
           <View style={styles.sub}>
+            <ImageBackground
+              source={require('./fire.png')}
+              style={{ width: 120, height: 120, justifyContent: 'center', alignSelf: 'center', alignItems: 'center' }}
+            >
+              <Text style={{ marginLeft: 2, marginTop: 45, fontSize: 30, fontWeight: 'bold' }}>{this.state.streaks}</Text>
+            </ImageBackground>
             <View style={styles.cameraLink}>
               <View style={{ justifyContent: "center", alignItems: "center" }}>
                 <Text
@@ -104,8 +122,9 @@ class Home extends React.Component {
               <View style={styles.smallButton}>
                 <TouchableOpacity
                   style={{ justifyContent: "center", alignItems: "center" }}
+                  onPress={() => this.setState({ isModal: true })}
                 >
-                  <Icon name="md-person" size={60} color="#33B8FF"></Icon>
+                  <Icon name="md-help" size={60} color="#33B8FF"></Icon>
                 </TouchableOpacity>
               </View>
               <View style={styles.smallButton}>
@@ -133,6 +152,7 @@ const styles = StyleSheet.create({
   sub: {
     justifyContent: "center",
     alignItems: "center",
+    marginBottom: 100,
     flex: 1,
   },
   statusBar: {
@@ -192,6 +212,23 @@ const styles = StyleSheet.create({
     width: "95%",
     alignSelf: "center",
     justifyContent: "center",
+  },
+  modal: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    padding: 50,
+    margin: 50,
+    borderRadius: 10,
+    borderColor: 'white',
+    width: '80%',
+    height: '80%',
+    flex: 1,
+  },
+  modalView: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22
   }
 });
 
