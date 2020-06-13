@@ -26,7 +26,7 @@ class Home extends React.Component {
     this.state = {
       user: this.props.navigation.state.params.user,
       purchases: [],
-      isModal: false,
+      isModal: true,
       streaks: 0,
     }
   }
@@ -86,17 +86,22 @@ class Home extends React.Component {
       >
         <View style={styles.container}>
           <SafeAreaView style={styles.statusBar}></SafeAreaView>
-          <View style={styles.sub}>
+          <View style = {styles.modalView}>
             <Modal
-            animationType="slide"
-            style={styles.modal}
-            transparency={true}
-            visible={this.state.isModal}>
-              <Text>kirb egg</Text>
-              <TouchableOpacity onPress={() => this.setState({ isModal: false })}>
-                <Text>spleen kirb egg</Text>
-              </TouchableOpacity>
+              animationType="slide"
+              transparency={true}
+              backdropColor={'white'}
+              backdropOpacity={0.5}
+              visible={this.state.isModal}>
+              <View style = {styles.modal}>
+                <Text>Your Account</Text>
+                <TouchableOpacity onPress={() => this.setState({ isModal: false })}>
+                  <Text>Exit</Text>
+                </TouchableOpacity>
+              </View>
             </Modal>
+          </View>
+          <View style={styles.sub}>
             <ImageBackground
               source = {require('./fire.png')}
               style = {{width: 120, height: 120, justifyContent: 'center', alignSelf: 'center', alignItems: 'center'}}
@@ -226,11 +231,21 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   modal: {
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: 'white',
     padding: 50,
     margin: 50,
     borderRadius: 10,
     borderColor: 'white',
+    width: '80%',
+    height: '80%',
+    flex: 1,
+  },
+  modalView: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22
   }
 });
 
