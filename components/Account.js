@@ -11,7 +11,7 @@ import {
 import Icon from "react-native-vector-icons/Ionicons";
 import firebase from './../firebase';
 import RecommendedItem from "./RecommendedItem";
-
+import Home from './Home'
 
 
 
@@ -20,7 +20,8 @@ class Account extends React.Component {
         super(props);
         this.state = {
             user: this.props.navigation.state.params.user,
-            purchases: []
+            purchases: [],
+            streaks: 0,
         }
     }
 
@@ -29,9 +30,21 @@ class Account extends React.Component {
             'value',
             querySnapShot => {
                 let data = querySnapShot.val()
+                let j;
                 let i;
-                for (i in data) {
+                for (j in data) {
                     this.setState({ purchases: [...this.state.purchases, data[i]] })
+                }
+                if (! (data === null)) {
+                    for (i = data.length() - 1; i >= 1; i--) {
+                        if (Math.floor(data[i] / 86400) == Math.floor(data[i - 1] / 86400) + 1)
+                            this.setState({ streaks:  data.length() })
+                        else if (Math.floor(data[i] / 86400) >= Math.floor(data[i - 1] / 86400) + 1)
+                            this.setState({ streaks: data.length() - i - 1})
+                    }
+                  }
+                else {
+                    this.state.streaks = 0;
                 }
             }
         )
@@ -50,7 +63,7 @@ class Account extends React.Component {
                         <Text style={styles.info2}>Purchases</Text>
                     </View>
                     <View style={{ flex: 1, flexDirection: 'column', alignSelf: 'center', alignItems: 'center' }}>
-                        <Text style={styles.info1}>?</Text>
+                        <Text style={styles.info1}>{this.state.streaks}</Text>
                         <Text style={styles.info2}>Streaks</Text>
                     </View>
                 </View>

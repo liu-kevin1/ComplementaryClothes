@@ -69,10 +69,6 @@ class Home extends React.Component {
     )
   }
 
-  updateStreaks() {
-    this.state.streaks += 1;
-  }
-
   render() {
     return (
       <Swiper
@@ -93,9 +89,9 @@ class Home extends React.Component {
           <View style={styles.sub}>
             <Modal
             transparency={true}
-            visible={!this.state.isModal}>
+            visible={this.state.isModal}>
               <Text>kirb egg</Text>
-              <TouchableOpacity onPress={this.state.isModal=false}>
+              <TouchableOpacity onPress={() => this.setState({ isModal: false })}>
                 <Text>more kirb egg</Text>
               </TouchableOpacity>
             </Modal>
@@ -136,7 +132,7 @@ class Home extends React.Component {
               <View style={styles.smallButton}>
                 <TouchableOpacity
                   style={{ justifyContent: "center", alignItems: "center" }}
-                  onPress = {this.state.isModal = true}
+                  onPress={() => this.setState({ isModal: true })}
                   style={styles.modal}
                 >
                   <Icon name="md-person" size={60} color="#33B8FF"></Icon>
