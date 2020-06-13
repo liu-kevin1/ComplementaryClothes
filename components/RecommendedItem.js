@@ -50,8 +50,8 @@ class RecommendedItem extends React.Component {
           style={{ flex: 1, alignSelf: "flex-end", alignItems: "center" }}
           onPress={this.purchase.bind(this)}
         >
-          <Icon name="md-cart" size={50} color="#33B8FF"></Icon>
-          <Text style={{ color: "#33B8FF", fontSize: 20 }}>Purchase</Text>
+          <Icon name="md-cart" size={75} color="#33B8FF"></Icon>
+          <Text style={{ color: "#33B8FF", fontSize: 25 }}>Purchase</Text>
         </TouchableOpacity>
       </View>
 
@@ -66,13 +66,13 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: "#c3c9c9",
     alignItems: "center",
-    margin: 10,
+    margin: 20,
     flexDirection: "column",
     justifyContent: 'flex-start',
     flex: 1
   },
   title: {
-    fontSize: 18,
+    fontSize: 25,
     color: "black",
   },
 });

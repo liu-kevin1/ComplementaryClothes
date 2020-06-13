@@ -16,12 +16,13 @@ class Recommended extends React.Component {
     render() {
         return (
           <ScrollView contentContainerStyle = {styles.container}>
+            <View>
+              <Text style = {styles.text}>Here are your recommendations!</Text>
 
-            <Text style = {styles.text}>Here are your recommendations!</Text>
-
-            <View style = {styles.container}>
+              <View style = {styles.container}>
                 <RecommendedItem url={this.state.recommendations[0].price_url} img_url={this.state.recommendations[0].image} title={this.state.recommendations[0].name}></RecommendedItem>
                 <RecommendedItem url={this.state.recommendations[1].price_url} img_url={this.state.recommendations[1].image} title={this.state.recommendations[1].name}></RecommendedItem>
+              </View>
             </View>
           </ScrollView>
         )
@@ -30,8 +31,8 @@ class Recommended extends React.Component {
 
 const styles = StyleSheet.create({
   background: {
-    width: "100%",
-    height: "100%",
+    width: "90%",
+    height: "85%",
     borderRadius: 20,
     backgroundColor: "#c3c9c9",
     alignSelf: "center",
@@ -44,9 +45,10 @@ const styles = StyleSheet.create({
   },
   text: {
     padding: 20,
-    fontSize: 22,
+    fontSize: 20,
     color: "#000080",
-    backgroundColor: "#33B8FF"
+    backgroundColor: "#33B8FF",
+    textAlign: 'center'
   }
 });
 
