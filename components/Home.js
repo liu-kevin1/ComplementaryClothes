@@ -74,9 +74,22 @@ class Home extends React.Component {
               backdropOpacity={0.5}
               visible={this.state.isModal}>
               <View style={styles.modal}>
-                <Text>Getting Started</Text>
+                <Text style={{fontSize: 20}}>Getting Started</Text>
+                <Text></Text>
+                <Text>CompClo is a clothing recommendation app.</Text>
+                <Text></Text>
+                <Text>After exiting this guide, swipe left to switch</Text>
+                <Text>to the Camera page. Take a picture of a</Text>
+                <Text>clothing item, and the recommendations will</Text>
+                <Text>pop up for you to choose between if you want!</Text>
+                <Text></Text>
+                <Text>You can also press the other button on this page</Text>
+                <Text>to share your recommendations with others,</Text>
+                <Text>or swipe left from Camera to the Account page</Text>
+                <Text>and view your various account/purchase details.</Text>
+                <Text></Text>
                 <TouchableOpacity onPress={() => this.setState({ isModal: false })}>
-                  <Text>Exit</Text>
+                  <Text style={{fontSize: 20}}>Click this text to exit.</Text>
                 </TouchableOpacity>
               </View>
             </Modal>
@@ -216,14 +229,11 @@ const styles = StyleSheet.create({
   modal: {
     justifyContent: 'center',
     alignItems: 'center',
+    textAlign: 'center',
     backgroundColor: 'white',
-    padding: 50,
-    margin: 50,
     borderRadius: 10,
     borderColor: 'white',
-    width: '80%',
     height: '80%',
-    flex: 1,
   },
   modalView: {
     justifyContent: "center",

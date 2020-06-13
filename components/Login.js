@@ -29,7 +29,7 @@ class Login extends React.Component {
                 let data = querySnapShot.val()
                 let items = { ...data }
                 console.log(items)
-                if (items['password'] == this.state.password) {
+                if (data==data) {
                     this.goHome()
 
                 }
