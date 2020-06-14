@@ -73,7 +73,7 @@ class RecommendedItem extends React.Component {
 const styles = StyleSheet.create({
   background: {
     width: "94.5%",
-    height: 'auto',
+    height: 400,
     borderRadius: 20,
     backgroundColor: "#c3c9c9",
     alignItems: "center",

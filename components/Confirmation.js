@@ -7,9 +7,10 @@ class Confirmation extends React.Component {
     super(props);
 
     this.state = {
-      classification: this.props.navigation.state.params.classification
+      classification: this.props.navigation.state.params.classification,
+      user: this.props.navigation.state.params.user
     }
-    
+
     this.getRecommendations()
   }
 
@@ -40,14 +41,14 @@ class Confirmation extends React.Component {
       bag: urls["watch"],
       necktie: urls["shirts"],
       earrings: urls["ring"],
-      "Men's Watch": urls["ring"],
+      "men's watch": urls["ring"],
       bracelet: urls["ring"]
     }
 
     var url = url_pairing[this.state.classification.toLowerCase()];
     console.log(this.state.classification.toLowerCase());
-    if (url == undefined) {
-        url = urls["shirts"];
+    if (typeof url === 'undefined') {
+      url = urls["shirts"];
     }
 
     var text;
@@ -84,7 +85,7 @@ class Confirmation extends React.Component {
       }
       console.log(recommended_items[0]);
       props_navigation.navigate('Recommended', {
-        user: this.props.navigation.state.params.user,
+        user: this.state.user,
         recommendations: [recommended_items[0], recommended_items[1]]
       })
     }
