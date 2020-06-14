@@ -9,6 +9,7 @@ import {
   TouchableHighlight,
   StatusBar,
   Image,
+  Share,
   ImageBackground,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -18,6 +19,7 @@ import CameraView from "./CameraView";
 import Account from "./Account";
 import firebase from './../firebase';
 import Login from './Login';
+import * as Sharing from 'expo-sharing';
 
 
 class Home extends React.Component {
@@ -47,6 +49,17 @@ class Home extends React.Component {
       }
     );
   }
+
+  openShareDialogAsync = async () => {
+    try {
+      const results = Share.share({
+        message: "I'm using the CompClo app to find clothing items that look good with what I'm wearing! You should try it out on the Google Play or App Stores!"
+      });
+    }
+    catch (error) {
+      alert(error.message)
+    }
+  };
 
   componentDidMount() {
     firebase.database().ref('/' + this.state.user + '/purchases/').on(
@@ -149,7 +162,8 @@ class Home extends React.Component {
               </View>
               <View style={styles.smallButton}>
                 <TouchableOpacity
-                  style={{ justifyContent: "center", alignItems: "center" }}
+                  style={{ justifyContent: "center", alignItems: "center" }} 
+                  onPress = {this.openShareDialogAsync}
                 >
                   <Icon name="md-share" size={60} color="#33B8FF"></Icon>
                 </TouchableOpacity>

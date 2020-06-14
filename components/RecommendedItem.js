@@ -31,7 +31,7 @@ class RecommendedItem extends React.Component {
   openShareDialogAsync = async () => {
     try {
       const results = Share.share({
-        message: "I used the CompClo app to buy this piecee: " + this.props.url + " Try it out yourself!"
+        message: "I used the CompClo app to buy this piece: " + this.props.url + " Try it out yourself!"
       });
     }
     catch (error) {
@@ -41,10 +41,9 @@ class RecommendedItem extends React.Component {
   render() {
     const { img_url, url, title } = this.props;
     return (
-
       <View style={styles.background}>
         <TouchableOpacity onPress={this.openShareDialogAsync}>
-          <Text>Share</Text>
+          <Text style = {{fontSize: 18, fontWeight: 'bold'}}>Share</Text>
         </TouchableOpacity>
         <Image
           style={{
@@ -64,17 +63,16 @@ class RecommendedItem extends React.Component {
           onPress={this.purchase.bind(this)}
         >
           <Icon name="md-cart" size={75} color="#33B8FF"></Icon>
-          <Text style={{ color: "#33B8FF", fontSize: 25 }}>Purchase</Text>
+          <Text style={{ color: "#33B8FF", fontSize: 20, marginTop: -20 }}>Purchase</Text>
         </TouchableOpacity>
       </View>
-
     );
   }
 }
 
 const styles = StyleSheet.create({
   background: {
-    width: "97.5%",
+    width: "94.5%",
     height: 'auto',
     borderRadius: 20,
     backgroundColor: "#c3c9c9",
@@ -82,10 +80,10 @@ const styles = StyleSheet.create({
     margin: 20,
     flexDirection: "column",
     justifyContent: 'flex-start',
-    flex: 1
+    flex: 1,
   },
   title: {
-    fontSize: 25,
+    fontSize: 18,
     color: "black",
   },
 });
