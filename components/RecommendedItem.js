@@ -43,7 +43,7 @@ class RecommendedItem extends React.Component {
     return (
       <View style={styles.background}>
         <TouchableOpacity onPress={this.openShareDialogAsync}>
-          <Text style = {{fontSize: 18, fontWeight: 'bold'}}>Share</Text>
+          <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Share This Piece</Text>
         </TouchableOpacity>
         <Image
           style={{

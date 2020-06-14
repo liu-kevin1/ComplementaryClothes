@@ -62,24 +62,24 @@ class Home extends React.Component {
   };
 
   componentDidMount() {
-    firebase.database().ref('/' + this.state.user + '/purchases/').on(
-        'value',
-        querySnapShot => {
-            let data = querySnapShot.val()
-            let i;
-            if (! (data === null)) {
-              for (i = data.length() - 1; i >= 1; i--) {
-                  if (Math.floor(data[i] / 86400) == Math.floor(data[i - 1] / 86400) + 1)
-                      this.setState({ streaks:  data.length() })
-                  else if (Math.floor(data[i] / 86400) >= Math.floor(data[i - 1] / 86400) + 1)
-                      this.setState({ streaks: data.length() - i - 1})
-              }
-            }
-            else {
-              this.state.streaks = 0;
-            }
-        }
-    )
+    // firebase.database().ref('/' + this.state.user + '/purchases/').on(
+    //     'value',
+    //     querySnapShot => {
+    //         let data = querySnapShot.val()
+    //         let i;
+    //         if (! (data === null)) {
+    //           for (i = data.length() - 1; i >= 1; i--) {
+    //               if (Math.floor(data[i] / 86400) == Math.floor(data[i - 1] / 86400) + 1)
+    //                   this.setState({ streaks:  data.length() })
+    //               else if (Math.floor(data[i] / 86400) >= Math.floor(data[i - 1] / 86400) + 1)
+    //                   this.setState({ streaks: data.length() - i - 1})
+    //           }
+    //         }
+    //         else {
+    //           this.state.streaks = 0;
+    //         }
+    //     }
+    // )
   }
 
   render() {
@@ -104,8 +104,8 @@ class Home extends React.Component {
               animationType="slide"
               transparent={true}
               visible={this.state.isModal}>
-              <View style = {styles.modal}>
-                <Text style={{fontSize: 30, color: '#000080', fontWeight: 'bold'}}>Getting Started</Text>
+              <View style={styles.modal}>
+                <Text style={{ fontSize: 30, color: '#000080', fontWeight: 'bold' }}>Getting Started</Text>
                 <Text></Text>
                 <Text style={styles.helpText}>CompClo is a clothing recommendation app.</Text>
                 <Image source={require('./icon1.jpg')} style={styles.helpImage}></Image>
@@ -114,7 +114,7 @@ class Home extends React.Component {
                 <Text style={styles.helpText}>You can also press the other button on this page to share your recommendations with others, or swipe left from Camera to the Account page and view your various account/purchase details. Well then, let's get started!</Text>
                 <Image source={require('./icon3.jpg')} style={styles.helpImage}></Image>
                 <TouchableOpacity onPress={() => this.setState({ isModal: false })} style={styles.helpExit}>
-                  <Text style={{fontSize: 30, color: '#FF8B60', fontWeight: 'bold'}}>Exit</Text>
+                  <Text style={{ fontSize: 30, color: '#FF8B60', fontWeight: 'bold' }}>Exit</Text>
                 </TouchableOpacity>
               </View>
             </Modal>
@@ -167,8 +167,8 @@ class Home extends React.Component {
               </View>
               <View style={styles.smallButton}>
                 <TouchableOpacity
-                  style={{ justifyContent: "center", alignItems: "center" }} 
-                  onPress = {this.openShareDialogAsync}
+                  style={{ justifyContent: "center", alignItems: "center" }}
+                  onPress={this.openShareDialogAsync}
                 >
                   <Icon name="md-share" size={60} color="#33B8FF"></Icon>
                 </TouchableOpacity>
@@ -294,7 +294,7 @@ const styles = StyleSheet.create({
     borderColor: "#FF8B60",
     borderWidth: 3.5,
     marginTop: 4,
-    
+
   }
 });
 
