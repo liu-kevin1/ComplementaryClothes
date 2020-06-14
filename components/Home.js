@@ -270,6 +270,7 @@ const styles = StyleSheet.create({
     height: '80%',
     margin: 30,
     marginTop: 65,
+    fontFamily: "FOT-RodinHimawariPro-UB"
   },
   modalView: {
     justifyContent: "center",
