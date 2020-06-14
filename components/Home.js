@@ -102,33 +102,25 @@ class Home extends React.Component {
           <View style={styles.modalView}>
             <Modal
               animationType="slide"
-              transparency={true}
-              backdropColor={'white'}
-              backdropOpacity={0.5}
+              transparent={true}
               visible={this.state.isModal}>
               <View style = {styles.modal}>
-                <Text style={{fontSize: 30}}>Getting Started</Text>
+                <Text style={{fontSize: 30, color: '#000080', fontWeight: 'bold'}}>Getting Started</Text>
                 <Text></Text>
-                <Text>CompClo is a clothing recommendation app.</Text>
-                <Image source={require('./icon1.jpg')}></Image>
-                <Text>After exiting this guide, swipe left to switch</Text>
-                <Text>to the Camera page. Take a picture of a</Text>
-                <Text>clothing item, and the recommendations will</Text>
-                <Text>pop up for you to choose between if you want!</Text>
-                <Image source={require('./icon2.jpg')}></Image>
-                <Text>You can also press the other button on this page</Text>
-                <Text>to share your recommendations with others,</Text>
-                <Text>or swipe left from Camera to the Account page</Text>
-                <Text>and view your various account/purchase details.</Text>
-                <Image source={require('./icon3.jpg')}></Image>
-                <TouchableOpacity onPress={() => this.setState({ isModal: false })}>
-                  <Text style={{fontSize: 30}}>Click this text to exit.</Text>
+                <Text style={styles.helpText}>CompClo is a clothing recommendation app.</Text>
+                <Image source={require('./icon1.jpg')} style={styles.helpImage}></Image>
+                <Text style={styles.helpText}>After exiting this guide, swipe left to switch to the Camera page. Take a picture of a clothing item, and the recommendations will pop up for you to choose between if you want!</Text>
+                <Image source={require('./icon2.jpg')} style={styles.helpImage}></Image>
+                <Text style={styles.helpText}>You can also press the other button on this page to share your recommendations with others, or swipe left from Camera to the Account page and view your various account/purchase details. Well then, let's get started!</Text>
+                <Image source={require('./icon3.jpg')} style={styles.helpImage}></Image>
+                <TouchableOpacity onPress={() => this.setState({ isModal: false })} style={styles.helpExit}>
+                  <Text style={{fontSize: 30, color: '#FF8B60', fontWeight: 'bold'}}>Exit</Text>
                 </TouchableOpacity>
               </View>
             </Modal>
           </View>
           <TouchableOpacity onPress={() => this.props.navigation.navigate("Login")}>
-            <Icon name="md-return-left" size={40} style={{ marginLeft: 10, marginTop: -15, color: '#000080' }}></Icon>
+            <Icon name="md-return-left" size={40} style={{ marginLeft: 10, marginTop: -5, color: '#000080' }}></Icon>
           </TouchableOpacity>
           <View style={styles.sub}>
             <ImageBackground
@@ -265,16 +257,44 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     textAlign: 'center',
     backgroundColor: 'white',
-    borderRadius: 10,
     borderColor: 'white',
-    height: '80%',
-    margin: 30,
-    marginTop: 65,
-    fontFamily: "FOT-RodinHimawariPro-UB"
+    height: '100%',
+    padding: 10,
+    paddingTop: 15,
+    fontFamily: 'MOT-RodinHimawariPro-UB'
   },
   modalView: {
     justifyContent: "center",
     alignItems: "center",
+  },
+  helpText: {
+    fontSize: 14,
+    padding: 10,
+    width: '95%',
+    backgroundColor: "#f0fffe",
+    borderRadius: 20,
+    borderColor: "#ECECEC",
+    borderWidth: 2.5,
+    marginTop: 4,
+  },
+  helpImage: {
+    resizeMode: 'contain',
+    height: 95,
+    width: '95%',
+    borderRadius: 20,
+    borderColor: "#33B8FF",
+    borderWidth: 3.5,
+    marginTop: 4,
+  },
+  helpExit: {
+    padding: 3,
+    paddingHorizontal: 20,
+    backgroundColor: '#FFCCCB',
+    borderRadius: 20,
+    borderColor: "#FF8B60",
+    borderWidth: 3.5,
+    marginTop: 4,
+    
   }
 });
 

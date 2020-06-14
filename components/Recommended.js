@@ -35,8 +35,8 @@ class Recommended extends React.Component {
 
 const styles = StyleSheet.create({
   background: {
-    width: "100%",
-    height: "100%",
+    width: "90%",
+    height: "85%",
     borderRadius: 20,
     backgroundColor: "#c3c9c9",
     alignSelf: "center",
@@ -49,9 +49,10 @@ const styles = StyleSheet.create({
   },
   text: {
     padding: 20,
-    fontSize: 22,
+    fontSize: 20,
     color: "#000080",
-    backgroundColor: "#33B8FF"
+    backgroundColor: "#33B8FF",
+    textAlign: 'center'
   }
 });
 
