@@ -107,7 +107,7 @@ class Home extends React.Component {
               backdropOpacity={0.5}
               visible={this.state.isModal}>
               <View style = {styles.modal}>
-                <Text style={{fontSize: 20}}>Getting Started</Text>
+                <Text style={{fontSize: 30}}>Getting Started</Text>
                 <Text></Text>
                 <Text>CompClo is a clothing recommendation app.</Text>
                 <Image source={require('./icon1.jpg')}></Image>
@@ -120,9 +120,9 @@ class Home extends React.Component {
                 <Text>to share your recommendations with others,</Text>
                 <Text>or swipe left from Camera to the Account page</Text>
                 <Text>and view your various account/purchase details.</Text>
-                <Text></Text>
+                <Image source={require('./icon3.jpg')}></Image>
                 <TouchableOpacity onPress={() => this.setState({ isModal: false })}>
-                  <Text style={{fontSize: 20}}>Click this text to exit.</Text>
+                  <Text style={{fontSize: 30}}>Click this text to exit.</Text>
                 </TouchableOpacity>
               </View>
             </Modal>
@@ -268,6 +268,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: 'white',
     height: '80%',
+    margin: 30,
+    marginTop: 65,
   },
   modalView: {
     justifyContent: "center",
