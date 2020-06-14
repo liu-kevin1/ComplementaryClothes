@@ -110,12 +110,12 @@ class Home extends React.Component {
                 <Text style={{fontSize: 20}}>Getting Started</Text>
                 <Text></Text>
                 <Text>CompClo is a clothing recommendation app.</Text>
-                <Text></Text>
+                <Image source={require('./icon1.jpg')}></Image>
                 <Text>After exiting this guide, swipe left to switch</Text>
                 <Text>to the Camera page. Take a picture of a</Text>
                 <Text>clothing item, and the recommendations will</Text>
                 <Text>pop up for you to choose between if you want!</Text>
-                <Text></Text>
+                <Image source={require('./icon2.jpg')}></Image>
                 <Text>You can also press the other button on this page</Text>
                 <Text>to share your recommendations with others,</Text>
                 <Text>or swipe left from Camera to the Account page</Text>
@@ -265,15 +265,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     textAlign: 'center',
     backgroundColor: 'white',
-    margin: 30,
     borderRadius: 10,
     borderColor: 'white',
     height: '80%',
+    margin: -50,
   },
   modalView: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22
   }
 });
 
