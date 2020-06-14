@@ -15,21 +15,6 @@ class Recommended extends React.Component {
     };
   }
 
-<<<<<<< HEAD
-  render() {
-    return (
-      <ScrollView contentContainerStyle={styles.container}>
-
-        <Text style={styles.text}>Here are your recommendations!</Text>
-
-        <View style={styles.container}>
-          <RecommendedItem user={this.state.user} url={this.state.recommendations[0].price_url} img_url={this.state.recommendations[0].image} title={this.state.recommendations[0].name}></RecommendedItem>
-          <RecommendedItem user={this.state.user} url={this.state.recommendations[1].price_url} img_url={this.state.recommendations[1].image} title={this.state.recommendations[1].name}></RecommendedItem>
-        </View>
-      </ScrollView>
-    )
-  }
-=======
     render() {
         return (
           <ScrollView contentContainerStyle = {styles.container}>
@@ -46,7 +31,6 @@ class Recommended extends React.Component {
           </ScrollView>
         )
     }
->>>>>>> 756190a11c0b5712786037e01f71d27ff89f1d24
 }
 
 const styles = StyleSheet.create({

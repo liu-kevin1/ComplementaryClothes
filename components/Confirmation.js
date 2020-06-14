@@ -9,7 +9,7 @@ class Confirmation extends React.Component {
     this.state = {
       classification: this.props.navigation.state.params.classification
     }
-    console.log(this.state.classification)
+    
     this.getRecommendations()
   }
 
@@ -44,7 +44,11 @@ class Confirmation extends React.Component {
       bracelet: urls["ring"]
     }
 
-    var url = url_pairing[this.state.classification];
+    var url = url_pairing[this.state.classification.toLowerCase()];
+    console.log(this.state.classification.toLowerCase());
+    if (url == undefined) {
+        url = urls["shirts"];
+    }
 
     var text;
     var request = await (fetch(url)

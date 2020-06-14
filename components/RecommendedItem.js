@@ -62,13 +62,8 @@ class RecommendedItem extends React.Component {
           style={{ flex: 1, alignSelf: "flex-end", alignItems: "center" }}
           onPress={this.purchase.bind(this)}
         >
-<<<<<<< HEAD
-          <Icon name="md-cart" size={50} color="#33B8FF"></Icon>
-          <Text style={{ color: "#33B8FF", fontSize: 20 }}>Purchase</Text>
-=======
           <Icon name="md-cart" size={75} color="#33B8FF"></Icon>
           <Text style={{ color: "#33B8FF", fontSize: 20, marginTop: -20 }}>Purchase</Text>
->>>>>>> 756190a11c0b5712786037e01f71d27ff89f1d24
         </TouchableOpacity>
       </View>
     );
