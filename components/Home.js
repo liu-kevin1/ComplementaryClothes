@@ -9,6 +9,7 @@ import {
   TouchableHighlight,
   StatusBar,
   Image,
+  Share,
   ImageBackground,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -18,6 +19,7 @@ import CameraView from "./CameraView";
 import Account from "./Account";
 import firebase from './../firebase';
 import Login from './Login';
+import * as Sharing from 'expo-sharing';
 
 
 class Home extends React.Component {
@@ -48,6 +50,37 @@ class Home extends React.Component {
     );
   }
 
+  openShareDialogAsync = async () => {
+    try {
+      const results = Share.share({
+        message: "I'm using the CompClo app to find clothing items that look good with what I'm wearing! You should try it out on the Google Play or App Stores!"
+      });
+    }
+    catch (error) {
+      alert(error.message)
+    }
+  };
+
+  componentDidMount() {
+    firebase.database().ref('/' + this.state.user + '/purchases/').on(
+        'value',
+        querySnapShot => {
+            let data = querySnapShot.val()
+            let i;
+            if (! (data === null)) {
+              for (i = data.length() - 1; i >= 1; i--) {
+                  if (Math.floor(data[i] / 86400) == Math.floor(data[i - 1] / 86400) + 1)
+                      this.setState({ streaks:  data.length() })
+                  else if (Math.floor(data[i] / 86400) >= Math.floor(data[i - 1] / 86400) + 1)
+                      this.setState({ streaks: data.length() - i - 1})
+              }
+            }
+            else {
+              this.state.streaks = 0;
+            }
+        }
+    )
+  }
 
   render() {
     return (
@@ -73,7 +106,7 @@ class Home extends React.Component {
               backdropColor={'white'}
               backdropOpacity={0.5}
               visible={this.state.isModal}>
-              <View style={styles.modal}>
+              <View style = {styles.modal}>
                 <Text style={{fontSize: 20}}>Getting Started</Text>
                 <Text></Text>
                 <Text>CompClo is a clothing recommendation app.</Text>
@@ -142,7 +175,8 @@ class Home extends React.Component {
               </View>
               <View style={styles.smallButton}>
                 <TouchableOpacity
-                  style={{ justifyContent: "center", alignItems: "center" }}
+                  style={{ justifyContent: "center", alignItems: "center" }} 
+                  onPress = {this.openShareDialogAsync}
                 >
                   <Icon name="md-share" size={60} color="#33B8FF"></Icon>
                 </TouchableOpacity>
@@ -231,6 +265,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     textAlign: 'center',
     backgroundColor: 'white',
+    margin: 30,
     borderRadius: 10,
     borderColor: 'white',
     height: '80%',
