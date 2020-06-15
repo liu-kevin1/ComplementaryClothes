@@ -42,7 +42,7 @@ class Account extends React.Component {
                 <Text style={{ fontWeight: 'bold', alignSelf: 'center', marginTop: 10, fontSize: 20 }}>{'@' + this.state.user} </Text>
                 <View style={{ flexDirection: 'row', alignSelf: 'center', marginTop: 20, width: '85%' }}>
                     <View style={{ flex: 1, flexDirection: 'column', alignSelf: 'center', alignItems: 'center' }}>
-                        <Text style={styles.info1}>{this.state.purchases.length}</Text>
+                        <Text style={styles.info1}>{Object.keys(this.state.purchases).length}</Text>
                         <Text style={styles.info2}>Purchases</Text>
                     </View>
                     <View style={{ flex: 1, flexDirection: 'column', alignSelf: 'center', alignItems: 'center' }}>

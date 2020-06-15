@@ -15,22 +15,22 @@ class Recommended extends React.Component {
     };
   }
 
-    render() {
-        return (
-          <ScrollView contentContainerStyle = {styles.container}>
-            <View>
-              <Text style = {styles.text}>Here are your recommendations!</Text>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate("Home") }>
-                <Icon name = "md-return-left" size = {40} style = {{marginLeft: 20, marginBottom: -10, color: '#000080'}}/>
-              </TouchableOpacity>
-              <View style = {styles.container}>
-                <RecommendedItem url={this.state.recommendations[0].price_url} img_url={this.state.recommendations[0].image} title={this.state.recommendations[0].name}></RecommendedItem>
-                <RecommendedItem url={this.state.recommendations[1].price_url} img_url={this.state.recommendations[1].image} title={this.state.recommendations[1].name}></RecommendedItem>
-              </View>
-            </View>
-          </ScrollView>
-        )
-    }
+  render() {
+    return (
+      <ScrollView contentContainerStyle={styles.container}>
+        <View>
+          <Text style={styles.text}>Here are your recommendations!</Text>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate("Home")}>
+            <Icon name="md-return-left" size={40} style={{ marginLeft: 20, marginBottom: -10, color: '#000080' }} />
+          </TouchableOpacity>
+          <View style={styles.container}>
+            <RecommendedItem user={this.state.user} url={this.state.recommendations[0].price_url} img_url={this.state.recommendations[0].image} title={this.state.recommendations[0].name}></RecommendedItem>
+            <RecommendedItem user={this.state.user} url={this.state.recommendations[1].price_url} img_url={this.state.recommendations[1].image} title={this.state.recommendations[1].name}></RecommendedItem>
+          </View>
+        </View>
+      </ScrollView>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
