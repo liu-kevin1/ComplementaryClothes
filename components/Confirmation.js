@@ -61,15 +61,15 @@ class Confirmation extends React.Component {
 
     var props_navigation = this.props.navigation
     if (info != undefined) {
-      var values = ["name", "image"]
+      var values = ["name", "image", "price_url"];
       var return_count = 2;
       var recommended_items = [];
 
-      var info_items_length = Object.keys(info.items).length
+      var info_items_length = Object.keys(info.items).length;
 
       // Sort through info.items and pick out only items that have all the necessary data
       for (var i = 2; i < info_items_length; i++) {
-        var validItem = true
+        var validItem = true;
         for (var j = 0; j < values.length; j++) {
           if (info.items[i] == undefined || info.items[i][values[j]] == undefined) {
             validItem = false;
@@ -87,7 +87,7 @@ class Confirmation extends React.Component {
       props_navigation.navigate('Recommended', {
         user: this.state.user,
         recommendations: [recommended_items[0], recommended_items[1]]
-      })
+      });
     }
 
 
