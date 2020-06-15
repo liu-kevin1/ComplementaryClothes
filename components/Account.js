@@ -19,8 +19,9 @@ class Account extends React.Component {
         super(props);
         this.state = {
             user: this.props.navigation.state.params.user,
-            purchases: [],
             streaks: 0,
+            purchases: {}
+
         }
     }
 
@@ -29,15 +30,21 @@ class Account extends React.Component {
             'value',
             querySnapShot => {
                 let data = querySnapShot.val()
-                let j;
-                for (j in data) {
-                    console.log(data[j])
-                    let joined = this.state.purchases.concat(data[j])
-                    this.setState({ purchases: joined })
+                this.setState({ purchases: data })
+                const days = Object.keys(data).reverse();
+                let i;
+                for (i = 0; i < days.length - 1; i++) {
+                    if ((parseInt(days[i + 1]) - parseInt(days[i])) / 1000.0 > 86400) {
+                        this.setState({ streaks: 0 });
+                        break;
+                    }
+                    else {
+                        this.setState({ streaks: this.state.streaks + 1 });
+                    }
                 }
+
             }
         )
-
     }
 
     render() {
@@ -47,7 +54,7 @@ class Account extends React.Component {
                 <Text style={{ fontWeight: 'bold', alignSelf: 'center', marginTop: 10, fontSize: 20 }}>{'@' + this.state.user} </Text>
                 <View style={{ flexDirection: 'row', alignSelf: 'center', marginTop: 20, width: '85%' }}>
                     <View style={{ flex: 1, flexDirection: 'column', alignSelf: 'center', alignItems: 'center' }}>
-                        <Text style={styles.info1}>{this.state.purchases.length}</Text>
+                        <Text style={styles.info1}>{Object.keys(this.state.purchases).length}</Text>
                         <Text style={styles.info2}>Purchases</Text>
                     </View>
                     <View style={{ flex: 1, flexDirection: 'column', alignSelf: 'center', alignItems: 'center' }}>
@@ -60,8 +67,7 @@ class Account extends React.Component {
                 </View>
                 <View style={styles.scroll}>
                     <ScrollView >
-                        {this.state.purchases.map(purchase => <RecommendedItem user={this.state.user} img_url={purchase.img_url} url={purchase.url} title={purchase.title}></RecommendedItem>)}
-
+                        {Object.keys(this.state.purchases).map(key => <RecommendedItem user={this.state.user} img_url={this.state.purchases[key].img_url} url={this.state.purchases[key].url} title={this.state.purchases[key].title}></RecommendedItem>)}
                     </ScrollView>
                 </View>
 
