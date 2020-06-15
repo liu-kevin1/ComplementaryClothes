@@ -31,6 +31,18 @@ class Account extends React.Component {
             querySnapShot => {
                 let data = querySnapShot.val()
                 this.setState({ purchases: data })
+                const days = Object.keys(data).reverse();
+                let i;
+                for (i = 0; i < days.length - 1; i++) {
+                    if ((parseInt(days[i + 1]) - parseInt(days[i])) / 1000.0 > 86400) {
+                        this.setState({ streaks: 0 });
+                        break;
+                    }
+                    else {
+                        this.setState({ streaks: this.state.streaks + 1 });
+                    }
+                }
+
             }
         )
     }

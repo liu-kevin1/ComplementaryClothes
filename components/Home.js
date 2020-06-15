@@ -46,6 +46,7 @@ class Home extends React.Component {
     this.props.navigation.navigate("Account",
       {
         user: this.state.user,
+        streaks: this.state.streaks
       }
     );
   }
@@ -62,24 +63,24 @@ class Home extends React.Component {
   };
 
   componentDidMount() {
-    // firebase.database().ref('/' + this.state.user + '/purchases/').on(
-    //     'value',
-    //     querySnapShot => {
-    //         let data = querySnapShot.val()
-    //         let i;
-    //         if (! (data === null)) {
-    //           for (i = data.length() - 1; i >= 1; i--) {
-    //               if (Math.floor(data[i] / 86400) == Math.floor(data[i - 1] / 86400) + 1)
-    //                   this.setState({ streaks:  data.length() })
-    //               else if (Math.floor(data[i] / 86400) >= Math.floor(data[i - 1] / 86400) + 1)
-    //                   this.setState({ streaks: data.length() - i - 1})
-    //           }
-    //         }
-    //         else {
-    //           this.state.streaks = 0;
-    //         }
-    //     }
-    // )
+    firebase.database().ref('/' + this.state.user + '/purchases/').on(
+      'value',
+      querySnapShot => {
+        let data = querySnapShot.val()
+        const days = Object.keys(data).reverse();
+        let i;
+        for (i = 0; i < days.length - 1; i++) {
+          if ((parseInt(days[i + 1]) - parseInt(days[i])) / 1000.0 > 86400) {
+            this.setState({ streaks: 0 });
+            break;
+          }
+          else {
+            this.setState({ streaks: this.state.streaks + 1 });
+          }
+        }
+
+      }
+    )
   }
 
   render() {
@@ -178,7 +179,7 @@ class Home extends React.Component {
 
         </View>
         <CameraView navigation={this.props.navigation} />
-        <Account navigation={this.props.navigation} />
+        <Account streaks={this.state.streaks} navigation={this.props.navigation} />
       </Swiper>
     );
   }
