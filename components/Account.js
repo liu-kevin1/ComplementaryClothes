@@ -19,8 +19,9 @@ class Account extends React.Component {
         super(props);
         this.state = {
             user: this.props.navigation.state.params.user,
-            purchases: [],
             streaks: 0,
+            purchases: {}
+
         }
     }
 
@@ -29,15 +30,9 @@ class Account extends React.Component {
             'value',
             querySnapShot => {
                 let data = querySnapShot.val()
-                let j;
-                for (j in data) {
-                    console.log(data[j])
-                    let joined = this.state.purchases.concat(data[j])
-                    this.setState({ purchases: joined })
-                }
+                this.setState({ purchases: data })
             }
         )
-
     }
 
     render() {
@@ -60,8 +55,7 @@ class Account extends React.Component {
                 </View>
                 <View style={styles.scroll}>
                     <ScrollView >
-                        {this.state.purchases.map(purchase => <RecommendedItem user={this.state.user} img_url={purchase.img_url} url={purchase.url} title={purchase.title}></RecommendedItem>)}
-
+                        {Object.keys(this.state.purchases).map(key => <RecommendedItem user={this.state.user} img_url={this.state.purchases[key].img_url} url={this.state.purchases[key].url} title={this.state.purchases[key].title}></RecommendedItem>)}
                     </ScrollView>
                 </View>
 
