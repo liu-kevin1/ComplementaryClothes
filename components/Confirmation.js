@@ -56,13 +56,13 @@ class Confirmation extends React.Component {
       .then(response => response.text())
       .then(data => text = data)
       .catch(e => console.log(e)));
-
+    //console.log(text);
     var info = JSON.parse(text);
-
+ 
     var props_navigation = this.props.navigation
     if (info != undefined) {
       var values = ["name", "image", "price_url"];
-      var return_count = 2;
+      var return_count = 10;
       var recommended_items = [];
 
       var info_items_length = Object.keys(info.items).length;
@@ -83,10 +83,10 @@ class Confirmation extends React.Component {
           }
         }
       }
-      console.log(recommended_items[0]);
+
       props_navigation.navigate('Recommended', {
         user: this.state.user,
-        recommendations: [recommended_items[0], recommended_items[1]]
+        recommendations: recommended_items
       });
     }
 
