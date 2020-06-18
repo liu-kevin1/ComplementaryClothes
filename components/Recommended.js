@@ -30,19 +30,19 @@ class Recommended extends React.Component {
 
   render() {
     return (
-        <View style={styles.container}>
-          <Text style={styles.text}>Here are your recommendations!</Text>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate("Home")}>
-            <Icon name="md-return-left" size={40} style={{ marginLeft: 20, marginBottom: -10, color: '#000080' }} />
-          </TouchableOpacity>
-          <FlatList
-            data={this.state.data}
-            renderItem={({ item }) => (
-              <RecommendedItem title = {item.name} img_url = {item.image} url = {item.price_url}/>
-            )}
-            keyExtractor={item => item.index}
-          />
-        </View>
+      <View style={styles.container}>
+        <Text style={styles.text}>Here are your recommendations!</Text>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate("Home")}>
+          <Icon name="md-return-left" size={40} style={{ marginLeft: 20, marginBottom: -10, color: '#000080' }} />
+        </TouchableOpacity>
+        <FlatList
+          data={this.state.data}
+          renderItem={({ item }) => (
+            <RecommendedItem user={this.state.user} title={item.name} img_url={item.image} url={item.price_url} />
+          )}
+          keyExtractor={item => item.index}
+        />
+      </View>
 
 
       // <FlatList contentContainerStyle={styles.container}>
